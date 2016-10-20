@@ -1,0 +1,16 @@
+PODS:
+  - Blackhole (0.1.0)
+
+DEPENDENCIES:
+  - Blackhole (from `../`)
+
+EXTERNAL SOURCES:
+  Blackhole:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Blackhole: e75c96ab3b6a8f20a0929d0f9fc74545730a9bb0
+
+PODFILE CHECKSUM: 7ae825c1b5957f5ed7b6580d3a6613f4c65fb17a
+
+COCOAPODS: 1.0.1

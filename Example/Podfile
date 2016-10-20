@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Blackhole_Example' do
+  pod 'Blackhole', :path => '../'
+
+  target 'Blackhole_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
