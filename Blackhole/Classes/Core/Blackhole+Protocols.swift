@@ -72,7 +72,7 @@ extension Dictionary: BlackholeMessageConvertible {
     public func messageRepresentation() -> BlackholeMessage {
         var message: BlackholeMessage = [:]
         
-        if Key.self is String {
+        if Key.self == String.self {
             self.keys.forEach { key in
                 message[key as! String] = self[key]
             }
