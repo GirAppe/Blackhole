@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Wormhole Errors
-enum WormholeError: Error {
+public enum WormholeError: Error {
     case unknown
     case unknownResponse(Any?)
     case fileCachingError

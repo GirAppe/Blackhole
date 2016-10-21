@@ -9,7 +9,7 @@
 import Foundation
 import WatchConnectivity
 
-protocol BlackholeSession: class {
+public protocol BlackholeSession: class {
     static func isSupported() -> Bool
     static func `main`() -> BlackholeSession
     
@@ -26,7 +26,7 @@ protocol BlackholeSession: class {
 
 extension WCSession: BlackholeSession {
     
-    static func main() -> BlackholeSession {
+    public static func main() -> BlackholeSession {
         return WCSession.default()
     }
     

@@ -10,7 +10,7 @@ import Foundation
 import WatchConnectivity
 
 // MARK: - Listener protocol
-protocol Listener: class {
+public protocol Listener: class {
     var time: Date { get }
     weak var wormhole: Wormhole? { get set }
     func deliver(_ object: Any?) -> Any?
@@ -22,19 +22,19 @@ extension Listener {
 }
 
 // MARK: - Message Listener
-class MessageListener: Listener {
+public class MessageListener: Listener {
     
     // MARK: - Properties
-    let time = Date()
+    public let time = Date()
     var handler: (BlackholeMessage)->(BlackholeMessage?)
     var autoremoved: Bool = false
-    weak var wormhole: Wormhole?
+    weak public var wormhole: Wormhole?
     
-    init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
+    public init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
         self.handler = handler
     }
     
-    func deliver(_ object: Any?) -> Any? {
+    public func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }
@@ -49,21 +49,21 @@ class MessageListener: Listener {
 }
 
 // MARK: - Data listener
-class DataListener: Listener {
+public class DataListener: Listener {
     
     // MARK: - Properties
-    let time = Date()
+    public let time = Date()
     var handler: (Data)->(Data?)
     var autoremoved: Bool = false
-    weak var wormhole: Wormhole?
+    weak public var wormhole: Wormhole?
     
     // MARK: - Lifecycle
-    init(handler: @escaping (Data)->(Data?)) {
+    public init(handler: @escaping (Data)->(Data?)) {
         self.handler = handler
     }
     
     // MARK: - Public
-    func deliver(_ object: Any?) -> Any? {
+    public func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }

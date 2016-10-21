@@ -10,12 +10,12 @@ import Foundation
 import WatchConnectivity
 
 // MARK: - Typedefs
-typealias BlackholeMessage = [String:Any]
-typealias BlackholeSuccessClosure = ()->()
-typealias BlackholeFailureClosure = (WormholeError?)->()
+public typealias BlackholeMessage = [String:Any]
+public typealias BlackholeSuccessClosure = ()->()
+public typealias BlackholeFailureClosure = (WormholeError?)->()
 
 // MARK: - Wormhole
-class Wormhole: NSObject {
+public class Blackhole: NSObject {
     // MARK: - Private Properties
     internal var session: BlackholeSession?
     internal var listeners: [String:Listener] = [:]             // Listener handlers
@@ -357,18 +357,18 @@ extension Wormhole: WCSessionDelegate {
     
     @available(iOS 9.3, *)
     @available(watchOSApplicationExtension 2.2, *)
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         self.session = session
     }
     
-    func sessionReachabilityDidChange(_ session: WCSession) {
+    public func sessionReachabilityDidChange(_ session: WCSession) {
         // TODO: handle reachability issues
         if session.isReachable {
             self.session = session
         }
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+    public func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let identifier = message[Key.Identifier] as? String, let listener = self.listeners[identifier] {
             let _ = listener.deliver(message[Key.Body] as AnyObject?)
         }
@@ -377,7 +377,7 @@ extension Wormhole: WCSessionDelegate {
         }
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+    public func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         if let identifier = message[Key.Identifier] as? String, let listener = self.listeners[identifier] {
             let reply = listener.deliver(message[Key.Body])
             
@@ -393,7 +393,7 @@ extension Wormhole: WCSessionDelegate {
         }
     }
     
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+    public func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         guard let message = NSKeyedUnarchiver.unarchiveObject(with: messageData) as? BlackholeMessage else {
             // TODO: Handle!
             return
@@ -407,7 +407,7 @@ extension Wormhole: WCSessionDelegate {
         }
     }
     
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping ((Data) -> Void)) {
+    public func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping ((Data) -> Void)) {
         guard let message = NSKeyedUnarchiver.unarchiveObject(with: messageData) as? [String:AnyObject] else {
             // TODO: Handle!
             replyHandler(Data())
@@ -431,7 +431,7 @@ extension Wormhole: WCSessionDelegate {
         }
     }
     
-    func session(_ session: WCSession, didReceive file: WCSessionFile) {
+    public func session(_ session: WCSession, didReceive file: WCSessionFile) {
         // Defer file clearup
         defer {
             do {
@@ -482,7 +482,7 @@ extension Wormhole: WCSessionDelegate {
         }
     }
     
-    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+    public func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
         // Complete transfer
         let blackholeError: WormholeError? = error != nil ? WormholeError.sendingError(error!) : nil
         self.fileTransfers[fileTransfer.file.fileURL.absoluteString]?(blackholeError)

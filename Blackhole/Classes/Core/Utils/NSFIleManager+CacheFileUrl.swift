@@ -18,7 +18,7 @@ extension FileManager {
      
      - returns: File url in Cache directory, or nil
      */
-    class func cacheTemporaryFileUrl(_ fileType: String = ".temp") -> URL? {
+    internal class func cacheTemporaryFileUrl(_ fileType: String = ".temp") -> URL? {
         return FileManager.default.cacheTemporaryFileUrl(fileType)
     }
     
@@ -29,7 +29,7 @@ extension FileManager {
      
      - returns: File url in Cache directory, or nil
      */
-    func cacheTemporaryFileUrl(_ fileType: String = ".temp") -> URL? {
+    internal func cacheTemporaryFileUrl(_ fileType: String = ".temp") -> URL? {
         let urls = self.urls(for: .cachesDirectory, in: .userDomainMask)
         
         guard let dir = urls.first else {

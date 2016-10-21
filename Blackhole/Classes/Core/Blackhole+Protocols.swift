@@ -10,44 +10,44 @@ import Foundation
 import WatchConnectivity
 
 // MARK: - Protocols
-protocol WormholeMessageMappable {
+public protocol WormholeMessageMappable {
     init?(message: [String : AnyObject])
 }
 
-protocol WormholeMessageConvertible {
+public protocol WormholeMessageConvertible {
     func messageRepresentation() -> BlackholeMessage
 }
 
-protocol WormholeDataMappable {
+public protocol WormholeDataMappable {
     init?(data: Data)
 }
 
-protocol WormholeDataConvertible {
+public protocol WormholeDataConvertible {
     func dataRepresentation() -> Data
 }
 
 // MARK: - Default extensions - WormholeDataConvertible
 extension Data: WormholeDataConvertible {
-    func dataRepresentation() -> Data {
+    public func dataRepresentation() -> Data {
         return self
     }
 }
 
 extension NSArray: WormholeDataConvertible {
-    func dataRepresentation() -> Data {
+    public func dataRepresentation() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 }
 
 extension NSDictionary: WormholeDataConvertible {
-    func dataRepresentation() -> Data {
+    public func dataRepresentation() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 }
 
 extension Array: WormholeDataConvertible {
     
-    func dataRepresentation() -> Data {
+    public func dataRepresentation() -> Data {
         let anySelf = self.mapExisting { $0 }
         return NSArray(array: anySelf).dataRepresentation()
     }
@@ -57,7 +57,7 @@ extension Array: WormholeDataConvertible {
 // MARK: - Default extensions - WormholeMessageMappable
 extension Dictionary: WormholeMessageMappable {
     
-    init?(message: [String : AnyObject]){
+    public init?(message: [String : AnyObject]){
         self.init()
         
         for key in message.keys {
@@ -70,7 +70,7 @@ extension Dictionary: WormholeMessageMappable {
 // MARK: - Default extensions - WormholeDataMappable
 extension Data: WormholeDataMappable {
 
-    init?(data: Data) {
+    public init?(data: Data) {
         self.init(data)
     }
     
@@ -79,7 +79,7 @@ extension Data: WormholeDataMappable {
 extension Dictionary: WormholeDataMappable {
     
     // Only works for dictionaries as [string:AnyObject]
-    init?(data: Data) {
+    public init?(data: Data) {
         guard let nsmessage = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSDictionary else {
             return nil
         }
@@ -97,7 +97,7 @@ extension UIImage: WormholeDataMappable { }
 
 extension Array: WormholeDataMappable {
     
-    init?(data: Data) {
+    public init?(data: Data) {
         guard let nsarray = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSArray else {
             return nil
         }
