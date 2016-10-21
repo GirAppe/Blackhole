@@ -17,15 +17,18 @@ typealias BlackholeFailureClosure = (WormholeError?)->()
 // MARK: - Wormhole
 class Wormhole: NSObject {
     // MARK: - Private Properties
-    internal var session: WCSession?
+    internal var session: BlackholeSession?
     internal var listeners: [String:Listener] = [:]             // Listener handlers
     internal var fileTransfers: [String:(BlackholeFailureClosure)] = [:] // File transfer finished handlers - clearup and notify sending success
     
+    let sessionType: BlackholeSession.Type
+    
     // MARK: - Lifecycle
-    override init(){
+    init(type: BlackholeSession.Type = WCSession.self){
+        self.sessionType = type
         super.init()
         
-        self.activate()
+        activate()
     }
     
     // MARK: - Listeners
@@ -58,12 +61,6 @@ class Wormhole: NSObject {
             throw WormholeError.sessionInactive
         }
         
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
-        }
-        
         guard session.isReachable else {
             throw WormholeError.notReachable
         }
@@ -89,12 +86,6 @@ class Wormhole: NSObject {
     func responseForMessage<T:WormholeMessageMappable>(_ message: WormholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw WormholeError.sessionInactive
-        }
-        
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
         }
         
         guard session.isReachable else {
@@ -136,15 +127,22 @@ class Wormhole: NSObject {
         }
     }
     
+    func responseForObject<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+        let data = object.dataRepresentation()
+        
+        
+        if data.count < DataSize.MessageSize {
+            try self.responseForObject(asMessage: data, withType: type, andIdentifier: identifier, success: success, failure: failure)
+        }
+        else {
+            try self.responseForObject(asFile: data, withType: type, andIdentifier: identifier, success: success, failure: failure)
+        }
+    }
+    
+    // MARK: - Private data sending methods
     private func sendObject(asMessage object: WormholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw WormholeError.sessionInactive
-        }
-        
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
         }
         
         guard session.isReachable else {
@@ -174,12 +172,6 @@ class Wormhole: NSObject {
     private func sendObject(asFile object: WormholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw WormholeError.sessionInactive
-        }
-        
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
         }
         
         guard session.isReachable else {
@@ -226,27 +218,9 @@ class Wormhole: NSObject {
         }
     }
     
-    func responseForObject<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
-        let data = object.dataRepresentation()
-        
-        
-        if data.count < DataSize.MessageSize {
-            try self.responseForObject(asMessage: data, withType: type, andIdentifier: identifier, success: success, failure: failure)
-        }
-        else {
-            try self.responseForObject(asFile: data, withType: type, andIdentifier: identifier, success: success, failure: failure)
-        }
-    }
-    
     private func responseForObject<T:WormholeDataMappable>(asMessage object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw WormholeError.sessionInactive
-        }
-        
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
         }
         
         guard session.isReachable else {
@@ -277,12 +251,6 @@ class Wormhole: NSObject {
     private func responseForObject<T:WormholeDataMappable>(asFile object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw WormholeError.sessionInactive
-        }
-        
-        if #available(iOS 9.3, *) {
-            guard session.activationState == .activated else {
-                throw WormholeError.sessionInactive
-            }
         }
         
         guard session.isReachable else {
@@ -344,7 +312,7 @@ class Wormhole: NSObject {
     // MARK: - Activation
     func activate() {
         if session == nil {
-            session = WCSession.default()
+            session = sessionType.main()
             session?.delegate = self
             session?.activate()
         }
