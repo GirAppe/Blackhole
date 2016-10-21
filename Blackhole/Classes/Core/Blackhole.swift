@@ -24,7 +24,7 @@ public class Blackhole: NSObject {
     let sessionType: BlackholeSession.Type
     
     // MARK: - Lifecycle
-    init(type: BlackholeSession.Type = WCSession.self){
+    public init(type: BlackholeSession.Type = WCSession.self){
         self.sessionType = type
         super.init()
         
@@ -32,16 +32,16 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Listeners
-    func addListener(_ listener: Listener, forIdentifier identifier: String) {
+    public func addListener(_ listener: Listener, forIdentifier identifier: String) {
         self.listeners[identifier] = listener
         listener.wormhole = self
     }
     
-    func removeListener(forIdentifier identifier: String) {
+    public func removeListener(forIdentifier identifier: String) {
         self.listeners.removeValue(forKey: identifier)
     }
     
-    func removeListener(_ listener: Listener) {
+    public func removeListener(_ listener: Listener) {
         let index = self.listeners.index { _,tested -> Bool in
             return tested === listener
         }
@@ -52,11 +52,7 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Messages
-    func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String) throws {
-        try self.sendMessage(message, withIdentifier: identifier, success: nil, failure: nil)
-    }
-    
-    func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    public func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -83,7 +79,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    public func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -116,7 +112,7 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Data
-    func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    public func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         let data = object.dataRepresentation()
         
         if data.count < DataSize.MessageSize {
@@ -127,7 +123,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    public func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         let data = object.dataRepresentation()
         
         
@@ -310,7 +306,7 @@ public class Blackhole: NSObject {
     // MARK: - Helpers
     
     // MARK: - Activation
-    func activate() {
+    public func activate() {
         if session == nil {
             session = sessionType.main()
             session?.delegate = self
@@ -318,7 +314,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    func invalidate() {
+    public func invalidate() {
         session?.delegate = nil
         session = nil
     }

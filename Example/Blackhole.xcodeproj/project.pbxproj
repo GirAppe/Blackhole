@@ -16,6 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
 		CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
+		CC87A82D1DBA3C850099CD4C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82C1DBA3C850099CD4C /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Tests/Pods-Blackhole_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC87A82A1DBA2C710099CD4C /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
+		CC87A82C1DBA3C850099CD4C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DACDC7FFD9FD166C8783021A /* Blackhole.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Blackhole.podspec; path = ../Blackhole.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,8 +120,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
 				CC87A82A1DBA2C710099CD4C /* TestSession.swift */,
+				CC87A82C1DBA3C850099CD4C /* Queue.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */,
+				CC87A82D1DBA3C850099CD4C /* Queue.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

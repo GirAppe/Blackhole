@@ -4,14 +4,25 @@ import Blackhole
 
 class Tests: XCTestCase {
     
+    var emitter: Blackhole!
+//    var receiver: Blackhole!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+//        // Setup black holes
+//        emitter = Blackhole(type: TestSession.self)
+//        receiver = Blackhole(type: TestSession.self)
+//        // Setup emitters and receivers
+//        TestSession.defaultSession.emitter = emitter
+//        TestSession.defaultSession.receiver = receiver
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
+//        TestSession.defaultSession.invalidate()
     }
     
     func testExample() {
@@ -19,6 +30,22 @@ class Tests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+//    func testSimpleSending() {
+//        let identifier = "someIdentifier"
+//        let message: BlackholeMessage = ["someKey":"stringValue"]
+//        
+//        do {
+//            try emitter.sendMessage(message, withIdentifier: identifier, success: {
+////                XCTAssert(true, "Message sent!")
+//            }, failure: { error in
+////                XCTAssert(false, "Error sending: \(error)")
+//            })
+//        }
+//        catch {
+//            XCTAssert(false, "Error sending: \(error)")
+//        }
+//    }
+//    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure() {

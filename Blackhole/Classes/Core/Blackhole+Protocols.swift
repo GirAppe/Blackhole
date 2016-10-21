@@ -11,7 +11,7 @@ import WatchConnectivity
 
 // MARK: - Protocols
 public protocol BlackholeMessageMappable {
-    init?(message: [String : AnyObject])
+    init?(message: BlackholeMessage)
 }
 
 public protocol BlackholeMessageConvertible {
@@ -57,12 +57,28 @@ extension Array: BlackholeDataConvertible {
 // MARK: - Default extensions - BlackholeMessageMappable
 extension Dictionary: BlackholeMessageMappable {
     
-    public init?(message: [String : AnyObject]){
+    public init?(message: BlackholeMessage){
         self.init()
         
         for key in message.keys {
             self[(key as! Key)] = (message[key]!) as? Value
         }
+    }
+    
+}
+
+extension Dictionary: BlackholeMessageConvertible {
+    
+    public func messageRepresentation() -> BlackholeMessage {
+        var message: BlackholeMessage = [:]
+        
+        if Key.self is String {
+            self.keys.forEach { key in
+                message[key as! String] = self[key]
+            }
+        }
+        
+        return message
     }
     
 }
@@ -78,13 +94,13 @@ extension Data: BlackholeDataMappable {
 
 extension Dictionary: BlackholeDataMappable {
     
-    // Only works for dictionaries as [string:AnyObject]
+    // Only works for dictionaries as [String:Any]
     public init?(data: Data) {
         guard let nsmessage = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSDictionary else {
             return nil
         }
         
-        guard let message = nsmessage as? [String : AnyObject] else {
+        guard let message = nsmessage as? BlackholeMessage else {
             return nil
         }
         
