@@ -11,6 +11,6 @@ import Blackhole
 
 class TestSession {
     
-//    let hole = Wormhole()
+//    let hole = Blackhole()
     
 }

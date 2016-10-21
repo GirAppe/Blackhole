@@ -8,8 +8,8 @@
 
 import Foundation
 
-// MARK: - Wormhole Errors
-public enum WormholeError: Error {
+// MARK: - Blackhole Errors
+public enum BlackholeError: Error {
     case unknown
     case unknownResponse(Any?)
     case fileCachingError

@@ -1,5 +1,5 @@
 //
-//  WormholeProtocols.swift
+//  BlackholeProtocols.swift
 //  GolfKeeper
 //
 //  Created by Andrzej Michnia on 21/08/16.
@@ -10,42 +10,42 @@ import Foundation
 import WatchConnectivity
 
 // MARK: - Protocols
-public protocol WormholeMessageMappable {
+public protocol BlackholeMessageMappable {
     init?(message: [String : AnyObject])
 }
 
-public protocol WormholeMessageConvertible {
+public protocol BlackholeMessageConvertible {
     func messageRepresentation() -> BlackholeMessage
 }
 
-public protocol WormholeDataMappable {
+public protocol BlackholeDataMappable {
     init?(data: Data)
 }
 
-public protocol WormholeDataConvertible {
+public protocol BlackholeDataConvertible {
     func dataRepresentation() -> Data
 }
 
-// MARK: - Default extensions - WormholeDataConvertible
-extension Data: WormholeDataConvertible {
+// MARK: - Default extensions - BlackholeDataConvertible
+extension Data: BlackholeDataConvertible {
     public func dataRepresentation() -> Data {
         return self
     }
 }
 
-extension NSArray: WormholeDataConvertible {
+extension NSArray: BlackholeDataConvertible {
     public func dataRepresentation() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 }
 
-extension NSDictionary: WormholeDataConvertible {
+extension NSDictionary: BlackholeDataConvertible {
     public func dataRepresentation() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 }
 
-extension Array: WormholeDataConvertible {
+extension Array: BlackholeDataConvertible {
     
     public func dataRepresentation() -> Data {
         let anySelf = self.mapExisting { $0 }
@@ -54,8 +54,8 @@ extension Array: WormholeDataConvertible {
     
 }
 
-// MARK: - Default extensions - WormholeMessageMappable
-extension Dictionary: WormholeMessageMappable {
+// MARK: - Default extensions - BlackholeMessageMappable
+extension Dictionary: BlackholeMessageMappable {
     
     public init?(message: [String : AnyObject]){
         self.init()
@@ -67,8 +67,8 @@ extension Dictionary: WormholeMessageMappable {
     
 }
 
-// MARK: - Default extensions - WormholeDataMappable
-extension Data: WormholeDataMappable {
+// MARK: - Default extensions - BlackholeDataMappable
+extension Data: BlackholeDataMappable {
 
     public init?(data: Data) {
         self.init(data)
@@ -76,7 +76,7 @@ extension Data: WormholeDataMappable {
     
 }
 
-extension Dictionary: WormholeDataMappable {
+extension Dictionary: BlackholeDataMappable {
     
     // Only works for dictionaries as [string:AnyObject]
     public init?(data: Data) {
@@ -93,9 +93,9 @@ extension Dictionary: WormholeDataMappable {
     
 }
 
-extension UIImage: WormholeDataMappable { }
+extension UIImage: BlackholeDataMappable { }
 
-extension Array: WormholeDataMappable {
+extension Array: BlackholeDataMappable {
     
     public init?(data: Data) {
         guard let nsarray = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSArray else {

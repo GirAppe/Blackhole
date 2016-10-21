@@ -12,9 +12,9 @@ import WatchConnectivity
 // MARK: - Typedefs
 public typealias BlackholeMessage = [String:Any]
 public typealias BlackholeSuccessClosure = ()->()
-public typealias BlackholeFailureClosure = (WormholeError?)->()
+public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
-// MARK: - Wormhole
+// MARK: - Blackhole
 public class Blackhole: NSObject {
     // MARK: - Private Properties
     internal var session: BlackholeSession?
@@ -52,17 +52,17 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Messages
-    func sendMessage(_ message: WormholeMessageConvertible, withIdentifier identifier: String) throws {
+    func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String) throws {
         try self.sendMessage(message, withIdentifier: identifier, success: nil, failure: nil)
     }
     
-    func sendMessage(_ message: WormholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -83,13 +83,13 @@ public class Blackhole: NSObject {
         }
     }
     
-    func responseForMessage<T:WormholeMessageMappable>(_ message: WormholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -104,19 +104,19 @@ public class Blackhole: NSObject {
                         success?(response)
                     }
                     else {
-                        failure?(WormholeError.unknownResponse(reply))
+                        failure?(BlackholeError.unknownResponse(reply))
                     }
                 }
             }, errorHandler: { error in
                 DispatchQueue.main.async {
-                    failure?(WormholeError.sendingError(error))
+                    failure?(BlackholeError.sendingError(error))
                 }
             })
         }
     }
     
     // MARK: - Data
-    func sendObject(_ object: WormholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         let data = object.dataRepresentation()
         
         if data.count < DataSize.MessageSize {
@@ -127,7 +127,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    func responseForObject<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         let data = object.dataRepresentation()
         
         
@@ -140,13 +140,13 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Private data sending methods
-    private func sendObject(asMessage object: WormholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    private func sendObject(asMessage object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -169,13 +169,13 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func sendObject(asFile object: WormholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    private func sendObject(asFile object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -218,13 +218,13 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func responseForObject<T:WormholeDataMappable>(asMessage object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    private func responseForObject<T:BlackholeDataMappable>(asMessage object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -248,18 +248,18 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func responseForObject<T:WormholeDataMappable>(asFile object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    private func responseForObject<T:BlackholeDataMappable>(asFile object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
-            throw WormholeError.sessionInactive
+            throw BlackholeError.sessionInactive
         }
         
         guard session.isReachable else {
-            throw WormholeError.notReachable
+            throw BlackholeError.notReachable
         }
         
         DispatchQueue.global(qos: .background).async {
             guard let tempUrl = FileManager.cacheTemporaryFileUrl() else {
-                failure?(WormholeError.invalidData)
+                failure?(BlackholeError.invalidData)
                 return
             }
             
@@ -275,7 +275,7 @@ public class Blackhole: NSObject {
                 try wormholeData.write(to: tempUrl)
             }
             catch {
-                failure?(WormholeError.fileCachingError)
+                failure?(BlackholeError.fileCachingError)
                 return
             }
             
@@ -284,7 +284,7 @@ public class Blackhole: NSObject {
                 self.fileTransfers.removeValue(forKey: tempUrl.absoluteString)
                 
                 if error != nil {
-                    failure?(WormholeError.sendingError(error!))
+                    failure?(BlackholeError.sendingError(error!))
                 }
             }
             
@@ -339,7 +339,7 @@ public class Blackhole: NSObject {
 }
 
 // MARK: - WCSessionDelegate
-extension Wormhole: WCSessionDelegate {
+extension Blackhole: WCSessionDelegate {
     
     #if os(iOS)
     /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
@@ -484,7 +484,7 @@ extension Wormhole: WCSessionDelegate {
     
     public func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
         // Complete transfer
-        let blackholeError: WormholeError? = error != nil ? WormholeError.sendingError(error!) : nil
+        let blackholeError: BlackholeError? = error != nil ? BlackholeError.sendingError(error!) : nil
         self.fileTransfers[fileTransfer.file.fileURL.absoluteString]?(blackholeError)
         
         do {

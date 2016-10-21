@@ -1,5 +1,5 @@
 //
-//  WormholeListeners.swift
+//  BlackholeListeners.swift
 //  GolfKeeper
 //
 //  Created by Andrzej Michnia on 21/08/16.
@@ -12,7 +12,7 @@ import WatchConnectivity
 // MARK: - Listener protocol
 public protocol Listener: class {
     var time: Date { get }
-    weak var wormhole: Wormhole? { get set }
+    weak var wormhole: Blackhole? { get set }
     func deliver(_ object: Any?) -> Any?
 }
 
@@ -28,7 +28,7 @@ public class MessageListener: Listener {
     public let time = Date()
     var handler: (BlackholeMessage)->(BlackholeMessage?)
     var autoremoved: Bool = false
-    weak public var wormhole: Wormhole?
+    weak public var wormhole: Blackhole?
     
     public init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
         self.handler = handler
@@ -55,7 +55,7 @@ public class DataListener: Listener {
     public let time = Date()
     var handler: (Data)->(Data?)
     var autoremoved: Bool = false
-    weak public var wormhole: Wormhole?
+    weak public var wormhole: Blackhole?
     
     // MARK: - Lifecycle
     public init(handler: @escaping (Data)->(Data?)) {
