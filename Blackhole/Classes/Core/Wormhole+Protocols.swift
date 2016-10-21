@@ -15,7 +15,7 @@ protocol WormholeMessageMappable {
 }
 
 protocol WormholeMessageConvertible {
-    func dictRepresentation() -> [String : AnyObject]
+    func messageRepresentation() -> BlackholeMessage
 }
 
 protocol WormholeDataMappable {

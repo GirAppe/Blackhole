@@ -13,7 +13,7 @@ import WatchConnectivity
 protocol Listener: class {
     var time: Date { get }
     weak var wormhole: Wormhole? { get set }
-    func deliver(_ object: AnyObject?) -> AnyObject?
+    func deliver(_ object: Any?) -> Any?
 }
 
 // MARK: - Default count of timeout value
@@ -26,24 +26,24 @@ class MessageListener: Listener {
     
     // MARK: - Properties
     let time = Date()
-    var handler: ([String:AnyObject])->([String:AnyObject]?)
+    var handler: (BlackholeMessage)->(BlackholeMessage?)
     var autoremoved: Bool = false
     weak var wormhole: Wormhole?
     
-    init(handler: @escaping ([String:AnyObject])->([String:AnyObject]?)) {
+    init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
         self.handler = handler
     }
     
-    func deliver(_ object: AnyObject?) -> AnyObject? {
+    func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }
         
-        guard let message = object as? [String:AnyObject] else {
+        guard let message = object as? BlackholeMessage else {
             return nil
         }
         
-        return self.handler(message) as AnyObject?
+        return self.handler(message)
     }
     
 }
@@ -63,7 +63,7 @@ class DataListener: Listener {
     }
     
     // MARK: - Public
-    func deliver(_ object: AnyObject?) -> AnyObject? {
+    func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }
@@ -73,7 +73,7 @@ class DataListener: Listener {
             return nil
         }
         
-        return self.handler(data) as AnyObject?
+        return self.handler(data)
     }
     
 }

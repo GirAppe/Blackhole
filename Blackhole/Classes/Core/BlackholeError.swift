@@ -12,8 +12,10 @@ import Foundation
 enum WormholeError: Error {
     case unknown
     case unknownResponse(Any?)
+    case fileCachingError
     case invalidData
     case sendingError(Error)
+    case responseSerializationFailure
     case sessionInactive
     case notReachable
 }
