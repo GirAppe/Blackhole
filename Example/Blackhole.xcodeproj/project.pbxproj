@@ -16,7 +16,6 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
 		CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
-		CC87A82D1DBA3C850099CD4C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82C1DBA3C850099CD4C /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +48,6 @@
 		A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Tests/Pods-Blackhole_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC87A82A1DBA2C710099CD4C /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
-		CC87A82C1DBA3C850099CD4C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DACDC7FFD9FD166C8783021A /* Blackhole.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Blackhole.podspec; path = ../Blackhole.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +119,6 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				CC87A82A1DBA2C710099CD4C /* TestSession.swift */,
-				CC87A82C1DBA3C850099CD4C /* Queue.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -216,7 +213,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -377,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */,
-				CC87A82D1DBA3C850099CD4C /* Queue.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,8 +421,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -470,8 +468,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -490,6 +490,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -498,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FB3709B03E5AD3C9B64268B /* Pods-Blackhole_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -513,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930EEF755D6B816E1E66E742 /* Pods-Blackhole_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -528,6 +531,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -548,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F7DFAAA6A095F7F4ABD81DA /* Pods-Blackhole_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

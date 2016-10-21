@@ -15,9 +15,9 @@ public typealias BlackholeSuccessClosure = ()->()
 public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
 // MARK: - Blackhole
-public class Blackhole: NSObject {
+open class Blackhole: NSObject {
     // MARK: - Private Properties
-    internal var session: BlackholeSession?
+    fileprivate(set) public var session: BlackholeSession?
     internal var listeners: [String:Listener] = [:]             // Listener handlers
     internal var fileTransfers: [String:(BlackholeFailureClosure)] = [:] // File transfer finished handlers - clearup and notify sending success
     
@@ -31,17 +31,23 @@ public class Blackhole: NSObject {
         activate()
     }
     
+    public convenience init<T:BlackholeSession>(session: T) {
+        self.init(type: T.self)
+        
+        self.session = session
+    }
+    
     // MARK: - Listeners
-    public func addListener(_ listener: Listener, forIdentifier identifier: String) {
+    open func addListener(_ listener: Listener, forIdentifier identifier: String) {
         self.listeners[identifier] = listener
         listener.wormhole = self
     }
     
-    public func removeListener(forIdentifier identifier: String) {
+    open func removeListener(forIdentifier identifier: String) {
         self.listeners.removeValue(forKey: identifier)
     }
     
-    public func removeListener(_ listener: Listener) {
+    open func removeListener(_ listener: Listener) {
         let index = self.listeners.index { _,tested -> Bool in
             return tested === listener
         }
@@ -52,7 +58,7 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Messages
-    public func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
+    open func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -79,7 +85,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    public func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    open func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -112,7 +118,7 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Data
-    public func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
+    open func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         let data = object.dataRepresentation()
         
         if data.count < DataSize.MessageSize {
@@ -123,7 +129,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    public func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    open func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         let data = object.dataRepresentation()
         
         
@@ -136,7 +142,7 @@ public class Blackhole: NSObject {
     }
     
     // MARK: - Private data sending methods
-    private func sendObject(asMessage object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    fileprivate func sendObject(asMessage object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -165,7 +171,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func sendObject(asFile object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
+    fileprivate func sendObject(asFile object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure?, failure:BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -214,7 +220,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func responseForObject<T:BlackholeDataMappable>(asMessage object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    fileprivate func responseForObject<T:BlackholeDataMappable>(asMessage object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -244,7 +250,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    private func responseForObject<T:BlackholeDataMappable>(asFile object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
+    fileprivate func responseForObject<T:BlackholeDataMappable>(asFile object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
         }
@@ -306,7 +312,7 @@ public class Blackhole: NSObject {
     // MARK: - Helpers
     
     // MARK: - Activation
-    public func activate() {
+    open func activate() {
         if session == nil {
             session = sessionType.main()
             session?.delegate = self
@@ -314,7 +320,7 @@ public class Blackhole: NSObject {
         }
     }
     
-    public func invalidate() {
+    open func invalidate() {
         session?.delegate = nil
         session = nil
     }

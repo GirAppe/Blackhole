@@ -22,19 +22,19 @@ extension Listener {
 }
 
 // MARK: - Message Listener
-public class MessageListener: Listener {
+open class MessageListener: Listener {
     
     // MARK: - Properties
-    public let time = Date()
+    open let time = Date()
     var handler: (BlackholeMessage)->(BlackholeMessage?)
     var autoremoved: Bool = false
-    weak public var wormhole: Blackhole?
+    weak open var wormhole: Blackhole?
     
     public init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
         self.handler = handler
     }
     
-    public func deliver(_ object: Any?) -> Any? {
+    open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }
@@ -49,13 +49,13 @@ public class MessageListener: Listener {
 }
 
 // MARK: - Data listener
-public class DataListener: Listener {
+open class DataListener: Listener {
     
     // MARK: - Properties
-    public let time = Date()
+    open let time = Date()
     var handler: (Data)->(Data?)
     var autoremoved: Bool = false
-    weak public var wormhole: Blackhole?
+    weak open var wormhole: Blackhole?
     
     // MARK: - Lifecycle
     public init(handler: @escaping (Data)->(Data?)) {
@@ -63,7 +63,7 @@ public class DataListener: Listener {
     }
     
     // MARK: - Public
-    public func deliver(_ object: Any?) -> Any? {
+    open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
             self.wormhole?.removeListener(self)
         }
