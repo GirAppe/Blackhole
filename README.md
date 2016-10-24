@@ -1,6 +1,6 @@
 # Blackhole
 
-[![CI Status](http://img.shields.io/travis/GirAppe/Blackhole.svg?style=flat)](https://travis-ci.org/GirAppe/Blackhole)
+[![CI Status](http://img.shields.io/travis/GirAppe/Blackhole.svg?style=flat&branch=master)](https://travis-ci.org/GirAppe/Blackhole)
 [![Version](https://img.shields.io/cocoapods/v/Blackhole.svg?style=flat)](http://cocoapods.org/pods/Blackhole)
 [![License](https://img.shields.io/cocoapods/l/Blackhole.svg?style=flat)](http://cocoapods.org/pods/Blackhole)
 [![Platform](https://img.shields.io/cocoapods/p/Blackhole.svg?style=flat)](http://cocoapods.org/pods/Blackhole)
