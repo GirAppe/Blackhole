@@ -52,13 +52,6 @@ extension Array: BlackholeDataConvertible {
     }
 }
 
-extension UIImage: BlackholeDataConvertible {
-    // By default sends image as PNG
-    public func dataRepresentation() -> Data {
-        return UIImagePNGRepresentation(self)!
-    }
-}
-
 // MARK: - Default extensions - BlackholeMessageMappable
 extension Dictionary: BlackholeMessageMappable {
     public init?(message: BlackholeMessage){
@@ -106,8 +99,6 @@ extension Dictionary: BlackholeDataMappable {
     }
 }
 
-extension UIImage: BlackholeDataMappable { }
-
 extension Array: BlackholeDataMappable {
     
     public init?(data: Data) {
@@ -125,4 +116,15 @@ extension Array: BlackholeDataMappable {
     }
     
 }
+
+#if os(iOS)
+extension UIImage: BlackholeDataConvertible {
+    // By default sends image as PNG
+    public func dataRepresentation() -> Data {
+        return UIImagePNGRepresentation(self)!
+    }
+}
+
+extension UIImage: BlackholeDataMappable { }
+#endif
 
