@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'Blackhole'
   s.version          = '0.1.3'
   s.summary          = 'iOS <-> watchOS communication framework, based on WatchConnectivity framework.'
-  
+
   s.description      = <<-DESC
   iOS <-> watchOS communication framework, based on WatchConnectivity framework.
 
@@ -28,8 +28,16 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'Blackhole/Classes/Core/**/*'
-
   s.frameworks = 'Foundation', 'WatchConnectivity'
+  s.default_subspec = "Core"
+
+  s.subspec 'Core' do |core|
+    core.source_files = 'Blackhole/Classes/Core/**/*'
+  end
+
+  s.subspec 'BrightFutures' do |futures|
+      futures.source_files = 'Blackhole/Classes/{Core,BrightFutures}/**/*'
+      futures.dependency     'BrightFutures', '~> 5.0.1'
+  end
 
 end

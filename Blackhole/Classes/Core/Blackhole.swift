@@ -14,10 +14,18 @@ public typealias BlackholeMessage = [String:Any]
 public typealias BlackholeSuccessClosure = ()->()
 public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
+let BlackholeStartedSessionNotification = "BlackholeDidStartedSession"
+
 // MARK: - Blackhole
 open class Blackhole: NSObject {
     // MARK: - Private Properties
-    fileprivate(set) public var session: BlackholeSession?
+    fileprivate(set) public var session: BlackholeSession? {
+        didSet {
+            if let _ = self.session {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BlackholeStartedSessionNotification), object: self)
+            }
+        }
+    }
     internal var listeners: [String:Listener] = [:]             // Listener handlers
     internal var fileTransfers: [String:(BlackholeFailureClosure)] = [:] // File transfer finished handlers - clearup and notify sending success
     
