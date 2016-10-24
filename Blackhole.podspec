@@ -1,20 +1,21 @@
-#
-# Be sure to run `pod lib lint Blackhole.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
+# Andrzej Michnia @ GirAppe Studio
 
 Pod::Spec.new do |s|
   s.name             = 'Blackhole'
-  s.version          = '0.1.3'
-  s.summary          = 'iOS <-> watchOS communication framework, based on WatchConnectivity framework.'
+  s.version          = '0.1.4'
+  s.summary          = 'A delightful iOS to watchOS communication framework.'
 
   s.description      = <<-DESC
-  iOS <-> watchOS communication framework, based on WatchConnectivity framework.
+  A delightful iOS to watchOS communication framework, based on WatchConnectivity framework's WCSession.
 
   Utilizes Wormhole concept, that simplifies data sync between iOS and watch devices. Also, provides set of handful protocols, allowing to create easily synchronized custom model classes.
+
+  Some of the features:
+   - start listeners, waiting for given communication message identifiers
+   - send simple messages
+   - send every object, that can be represented as Data
+   - request any object from counterpart app, be sending a message and specifying success handler
+   - all public api wrapped in convenient promises implementation (BrightFutures)
 
   Must to have for watchOS development.
                        DESC
@@ -32,12 +33,12 @@ Pod::Spec.new do |s|
   s.default_subspec = "Core"
 
   s.subspec 'Core' do |core|
-    core.source_files = 'Blackhole/Classes/Core/**/*'
+      core.source_files     = 'Blackhole/Classes/Core/**/*'
   end
 
   s.subspec 'BrightFutures' do |futures|
-      futures.source_files = 'Blackhole/Classes/{Core,BrightFutures}/**/*'
-      futures.dependency     'BrightFutures', '~> 5.0.1'
+      futures.source_files  = 'Blackhole/Classes/{Core,BrightFutures}/**/*'
+      futures.dependency      'BrightFutures', '~> 5.0.1'
   end
 
 end
