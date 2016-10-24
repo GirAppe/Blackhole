@@ -14,10 +14,18 @@ public typealias BlackholeMessage = [String:Any]
 public typealias BlackholeSuccessClosure = ()->()
 public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
+let BlackholeStartedSessionNotification = "BlackholeDidStartedSession"
+
 // MARK: - Blackhole
 open class Blackhole: NSObject {
     // MARK: - Private Properties
-    fileprivate(set) public var session: BlackholeSession?
+    fileprivate(set) public var session: BlackholeSession? {
+        didSet {
+            if let _ = self.session {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BlackholeStartedSessionNotification), object: self)
+            }
+        }
+    }
     internal var listeners: [String:Listener] = [:]             // Listener handlers
     internal var fileTransfers: [String:(BlackholeFailureClosure)] = [:] // File transfer finished handlers - clearup and notify sending success
     
@@ -217,7 +225,7 @@ open class Blackhole: NSObject {
                 }
             }
             
-            session.transferFile(tempUrl, metadata: nil)
+            let _ = session.transferFile(tempUrl, metadata: nil)
         }
     }
     
@@ -306,7 +314,7 @@ open class Blackhole: NSObject {
             self.addListener(responseListener, forIdentifier: tempUrl.absoluteString)
             
             // Send file
-            session.transferFile(tempUrl, metadata: nil)
+            let _ = session.transferFile(tempUrl, metadata: nil)
         }
     }
     
@@ -420,8 +428,8 @@ extension Blackhole: WCSessionDelegate {
         if let identifier = message[Key.Identifier] as? String, let listener = self.listeners[identifier] {
             let reply = listener.deliver(message[Key.Body])
             
-            if let replyData = reply as? Data {
-                replyHandler(replyData)
+            if let replyData = reply as? BlackholeDataConvertible {
+                replyHandler(replyData.dataRepresentation())
             }
             else {
                 // TODO: Handle!
@@ -472,7 +480,7 @@ extension Blackhole: WCSessionDelegate {
         }
         
         // Confirm reply data
-        guard let replyData = reply as? Data else {
+        guard let replyData = reply as? BlackholeDataConvertible else {
             return
         }
         

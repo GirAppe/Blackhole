@@ -2,7 +2,7 @@ import UIKit
 import XCTest
 import Blackhole
 
-class ResponseMessagesTestCase: BlackholeTestCase {
+class ResponsePromisesTestCase: BlackholeTestCase {
     // MARK: - Basic Tests
     func testSimpleSendingResponseSuccess() {
         let identifier = "someIdentifier"
@@ -24,21 +24,17 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         }
         receiver.addListener(messegeListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            try emitter.responseForMessage(message, withType: BlackholeMessage.self, andIdentifier: identifier, success: { message in
-                guard let value = message["anotherKey"], value is Int, value as! Int == 12 else {
-                    XCTAssert(false)
-                    return
-                }
-                
+        let _ = emitter.promiseResponseForMessage(message, withType: [String:Int].self, andIdentifier: identifier)
+        .onSuccess { responseDict in
+            if let value = responseDict["anotherKey"], value == 12 {
                 sendExpectation.fulfill()
-            }, failure: { error in
+            }
+            else {
                 XCTAssert(false)
-            })
+            }
         }
-        catch {
-            XCTAssert(false, "Error sending: \(error)")
+        .onFailure { error in
+            XCTAssert(false)
         }
         
         self.waitForExpectations(timeout: 5) { (error) in
@@ -53,36 +49,21 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         let message: BlackholeMessage = ["someKey":"stringValue"]
         
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
-        let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(result: TestSession.EmitResult(success: false))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
-            guard let value = message["someKey"], value is String, value as! String == "stringValue" else {
-                XCTAssert(false)
-                return nil
-            }
-            
-            receiveExpectation.fulfill()
+            XCTAssert(false)
             return nil
         }
         receiver.addListener(messegeListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            try emitter.responseForMessage(message, withType: BlackholeMessage.self, andIdentifier: identifier, success: { message in
-                guard let value = message["anotherKey"], value is Int, value as! Int == 12 else {
-                    sendExpectation.fulfill()
-                    return
-                }
-                
-                XCTAssert(false)
-            }, failure: { error in
-                XCTAssert(false)
-            })
+        let _ = emitter.promiseResponseForMessage(message, withType: [String:Int].self, andIdentifier: identifier)
+        .onSuccess { responseDict in
+            XCTAssert(false)
         }
-        catch {
-            XCTAssert(false, "Error sending: \(error)")
+        .onFailure { error in
+            sendExpectation.fulfill()
         }
         
         self.waitForExpectations(timeout: 5) { (error) in
@@ -112,8 +93,8 @@ class ResponseMessagesTestCase: BlackholeTestCase {
             guard let name = message["name"] as? String,
                 let breedValue = message["breed"] as? String,
                 let breed = Breed(rawValue: breedValue)
-            else {
-                return nil
+                else {
+                    return nil
             }
             
             self.init(name: name, breed: breed)
@@ -135,11 +116,12 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         
         let identifier = "CatRequest"
         
+        // Expect cats
         let persianExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         let bengalExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         let siameseExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         
-        
+        // Prepare pattern
         self.session.emit(result: TestSession.EmitResult(success: true))
         self.session.emit(result: TestSession.EmitResult(success: true))
         self.session.emit(result: TestSession.EmitResult(success: true))
@@ -164,38 +146,38 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         }
         receiver.addListener(catListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            
-            let persianRequestMessage: BlackholeMessage = ["breed":"persian"]
-            try emitter.responseForMessage(persianRequestMessage, withType: Cat.self, andIdentifier: identifier, success: { cat in
-                XCTAssertEqual(cat.name, "Pussy")
-                XCTAssertEqual(cat.breed, Cat.Breed.persian)
-                persianExpectation.fulfill()
-            }, failure: { error in
-                XCTAssert(false)
-            })
-            
-            let bengalRequestMessage: BlackholeMessage = ["breed":"bengal"]
-            try emitter.responseForMessage(bengalRequestMessage, withType: Cat.self, andIdentifier: identifier, success: { cat in
-                XCTAssertEqual(cat.name, "Dotty")
-                XCTAssertEqual(cat.breed, Cat.Breed.bengal)
-                bengalExpectation.fulfill()
-            }, failure: { error in
-                XCTAssert(false)
-            })
-            
-            let siameseRequestMessage: BlackholeMessage = ["breed":"siamese"]
-            try emitter.responseForMessage(siameseRequestMessage, withType: Cat.self, andIdentifier: identifier, success: { cat in
-                XCTAssertEqual(cat.name, "Tetty")
-                XCTAssertEqual(cat.breed, Cat.Breed.siamese)
-                siameseExpectation.fulfill()
-            }, failure: { error in
-                XCTAssert(false)
-            })
+        // Send cats
+        let persianRequestMessage: BlackholeMessage = ["breed":"persian"]
+        let _ = emitter.promiseResponseForMessage(persianRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        .onSuccess { cat in
+            XCTAssertEqual(cat.name, "Pussy")
+            XCTAssertEqual(cat.breed, Cat.Breed.persian)
+            persianExpectation.fulfill()
         }
-        catch {
-            XCTAssert(false, "Error sending: \(error)")
+        .onFailure { error in
+            XCTAssert(false)
+        }
+        
+        let bengalRequestMessage: BlackholeMessage = ["breed":"bengal"]
+        let _ = emitter.promiseResponseForMessage(bengalRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        .onSuccess { cat in
+            XCTAssertEqual(cat.name, "Dotty")
+            XCTAssertEqual(cat.breed, Cat.Breed.bengal)
+            bengalExpectation.fulfill()
+        }
+        .onFailure { error in
+            XCTAssert(false)
+        }
+        
+        let siameseRequestMessage: BlackholeMessage = ["breed":"siamese"]
+        let _ = emitter.promiseResponseForMessage(siameseRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        .onSuccess { cat in
+            XCTAssertEqual(cat.name, "Tetty")
+            XCTAssertEqual(cat.breed, Cat.Breed.siamese)
+            siameseExpectation.fulfill()
+        }
+        .onFailure { error in
+            XCTAssert(false)
         }
         
         self.waitForExpectations(timeout: 5) { (error) in
@@ -209,7 +191,7 @@ class ResponseMessagesTestCase: BlackholeTestCase {
     func testImageSendingResponseSuccess() {
         let identifier = "someIdentifier"
         
-        let bundle = Bundle(for: ResponseMessagesTestCase.self)
+        let bundle = Bundle(for: ResponsePromisesTestCase.self)
         
         guard let imagePath = bundle.path(forResource: "blackhole-image", ofType: "jpg") else {
             XCTAssert(false,"Cannot load image path")
@@ -225,7 +207,7 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
         self.session.emit(result: TestSession.EmitResult(success: true))
-
+        
         let imageListener = ObjectListener(type: UIImage.self) { image in
             let data = image.dataRepresentation()
             
@@ -235,19 +217,15 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         }
         receiver.addListener(imageListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            try emitter.sendObject(imageSent, withIdentifier: identifier, success: { 
-                sendExpectation.fulfill()
-            }, failure: { error in
-                XCTAssert(false, "Failure sending: \(error)")
-            })
+        let _ = emitter.promiseSendObject(imageSent, withIdentifier: identifier)
+        .onSuccess {
+            sendExpectation.fulfill()
         }
-        catch {
-            XCTAssert(false, "Error sending: \(error)")
+        .onFailure { error in
+            XCTAssert(false)
         }
         
-        self.waitForExpectations(timeout: 12) { (error) in
+        self.waitForExpectations(timeout: 60) { (error) in
             if let error = error {
                 XCTAssert(false, "Error sending: \(error)")
             }
@@ -258,4 +236,53 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         }
     }
     
+    func testImageObjectResponderSuccess() {
+        let identifier = "someIdentifier"
+        
+        let message = ["image":"blackhole"]
+        
+        let bundle = Bundle(for: ResponsePromisesTestCase.self)
+        
+        guard let imagePath = bundle.path(forResource: "blackhole-image", ofType: "jpg") else {
+            XCTAssert(false,"Cannot load image path")
+            return
+        }
+        
+        guard let imageResponse = UIImage(contentsOfFile: imagePath) else {
+            XCTAssert(false,"Cannot load image")
+            return
+        }
+        
+        let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
+        let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
+        
+        self.session.emit(result: TestSession.EmitResult(success: true))
+        
+        let responder = MessageObjectResponder { message -> UIImage? in
+            XCTAssertEqual((message["image"] as? String) ?? "", "blackhole")
+            
+            receiveExpectation.fulfill()
+            return imageResponse
+        }
+        receiver.addListener(responder, forIdentifier: identifier)
+        
+        let _ = emitter.promiseObjectForMessage(message, withType: UIImage.self, andIdentifier: identifier)
+        .onSuccess { image in
+            XCTAssertEqual(image.dataRepresentation(), imageResponse.dataRepresentation())
+            sendExpectation.fulfill()
+        }
+        .onFailure { error in
+            XCTAssert(false)
+        }
+        
+        self.waitForExpectations(timeout: 60) { (error) in
+            if let error = error {
+                XCTAssert(false, "Error sending: \(error)")
+            }
+            
+            for tempFile in self.session.temporaryFilesThatShouldBeDeleted {
+                XCTAssertFalse(FileManager.default.fileExists(atPath: tempFile.absoluteString), "Temp file not deleted!")
+            }
+        }
+    }
 }

@@ -8,17 +8,15 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Blackhole'
-  s.version          = '0.1.0'
+  s.version          = '0.1.3'
   s.summary          = 'iOS <-> watchOS communication framework, based on WatchConnectivity framework.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
   iOS <-> watchOS communication framework, based on WatchConnectivity framework.
+
+  Utilizes Wormhole concept, that simplifies data sync between iOS and watch devices. Also, provides set of handful protocols, allowing to create easily synchronized custom model classes.
+
+  Must to have for watchOS development.
                        DESC
 
   s.homepage         = 'https://github.com/GirAppe/Blackhole'
@@ -26,20 +24,20 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Andrzej Michnia' => 'amichnia@girappe.com' }
   s.source           = { :git => 'https://github.com/GirAppe/Blackhole.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
+  s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'Blackhole/Classes/Core/**/*'
-
-  # s.resource_bundles = {
-  #   'Blackhole' => ['Blackhole/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'Foundation', 'WatchConnectivity'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.default_subspec = "Core"
 
+  s.subspec 'Core' do |core|
+    core.source_files = 'Blackhole/Classes/Core/**/*'
+  end
 
+  s.subspec 'BrightFutures' do |futures|
+      futures.source_files = 'Blackhole/Classes/{Core,BrightFutures}/**/*'
+      futures.dependency     'BrightFutures', '~> 5.0.1'
+  end
 
 end
