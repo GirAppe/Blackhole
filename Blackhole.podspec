@@ -19,6 +19,10 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
   iOS <-> watchOS communication framework, based on WatchConnectivity framework.
+
+  Utilizes Wormhole concept, that simplifies data sync between iOS and watch devices. Also, provides set of handful protocols, allowing to create easily synchronized custom model classes.
+
+  Must to have for watchOS development.
                        DESC
 
   s.homepage         = 'https://github.com/GirAppe/Blackhole'
