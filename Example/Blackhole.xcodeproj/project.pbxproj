@@ -14,17 +14,19 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* SendingMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */; };
+		607FACEC1AFB9204008FA782 /* SendingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SendingTestCase.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
 		6C6F80ED17AEE119429A9367 /* Pods_Blackhole_Example_BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE7161254E99C062931695C /* Pods_Blackhole_Example_BrightFutures.framework */; };
+		CC3849521DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849511DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift */; };
+		CC3849541DBE5DB500DF5226 /* ResponsePromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849531DBE5DB500DF5226 /* ResponsePromisesTestCase.swift */; };
 		CC7651B41DBE49C80077ACCC /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
 		CC7651BA1DBE49C80077ACCC /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
 		CC7651BC1DBE49C80077ACCC /* blackhole-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */; };
 		CC8239B81DBE4B840082F269 /* BlackholeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */; };
 		CC8239BA1DBE4BF70082F269 /* SendingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8239B91DBE4BF70082F269 /* SendingPromisesTestCase.swift */; };
-		CC86198B1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */; };
+		CC86198B1DBA686A00A5AEFE /* ReceivingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198A1DBA686A00A5AEFE /* ReceivingTestCase.swift */; };
 		CC86198D1DBA68E500A5AEFE /* BlackholeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */; };
-		CC86198F1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */; };
+		CC86198F1DBA69C800A5AEFE /* ResponseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198E1DBA69C800A5AEFE /* ResponseTestCase.swift */; };
 		CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
 		CCADB83F1DBE3D160007117D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		CCADB8401DBE3D160007117D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -69,7 +71,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Blackhole_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackhole_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingMessagesTestCase.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* SendingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingTestCase.swift; sourceTree = "<group>"; };
 		696552B8AF98A9FBAF714C93 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7DFEB7A763AFAC7D1A845870 /* Pods_Blackhole_Tests_BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Tests_BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D089C6C2A75C108603150C /* Pods_Blackhole_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,12 +79,14 @@
 		A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Tests/Pods-Blackhole_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AEA5AE0C87A3C05C23E43BF8 /* Pods-Blackhole_Example-BrightFutures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example-BrightFutures.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example-BrightFutures/Pods-Blackhole_Example-BrightFutures.debug.xcconfig"; sourceTree = "<group>"; };
+		CC3849511DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivingPromisesTestCase.swift; sourceTree = "<group>"; };
+		CC3849531DBE5DB500DF5226 /* ResponsePromisesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsePromisesTestCase.swift; sourceTree = "<group>"; };
 		CC7651C21DBE49C80077ACCC /* Blackhole_Tests-BrightFutures.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Blackhole_Tests-BrightFutures.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7651C31DBE49C80077ACCC /* Blackhole_Tests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Blackhole_Tests copy-Info.plist"; path = "/Users/andrzejmichnia/Projekty/Pods/Blackhole/Example/Blackhole_Tests copy-Info.plist"; sourceTree = "<absolute>"; };
 		CC8239B91DBE4BF70082F269 /* SendingPromisesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingPromisesTestCase.swift; sourceTree = "<group>"; };
-		CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivingMessagesTestCase.swift; sourceTree = "<group>"; };
+		CC86198A1DBA686A00A5AEFE /* ReceivingTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivingTestCase.swift; sourceTree = "<group>"; };
 		CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackholeTestCase.swift; sourceTree = "<group>"; };
-		CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessagesTestCase.swift; sourceTree = "<group>"; };
+		CC86198E1DBA69C800A5AEFE /* ResponseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTestCase.swift; sourceTree = "<group>"; };
 		CC87A82A1DBA2C710099CD4C /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		CCADB84C1DBE3D160007117D /* Blackhole_Example-BrightFutures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blackhole_Example-BrightFutures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCADB84D1DBE3D160007117D /* Blackhole_Example copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Blackhole_Example copy-Info.plist"; path = "/Users/andrzejmichnia/Projekty/Pods/Blackhole/Example/Blackhole_Example copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -228,9 +232,9 @@
 		CC8239BC1DBE4CD90082F269 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */,
-				CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */,
-				CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */,
+				607FACEB1AFB9204008FA782 /* SendingTestCase.swift */,
+				CC86198A1DBA686A00A5AEFE /* ReceivingTestCase.swift */,
+				CC86198E1DBA69C800A5AEFE /* ResponseTestCase.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -239,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				CC8239B91DBE4BF70082F269 /* SendingPromisesTestCase.swift */,
+				CC3849511DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift */,
+				CC3849531DBE5DB500DF5226 /* ResponsePromisesTestCase.swift */,
 			);
 			name = BrightFutures;
 			sourceTree = "<group>";
@@ -625,9 +631,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */,
-				CC86198F1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift in Sources */,
-				CC86198B1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* SendingMessagesTestCase.swift in Sources */,
+				CC86198F1DBA69C800A5AEFE /* ResponseTestCase.swift in Sources */,
+				CC86198B1DBA686A00A5AEFE /* ReceivingTestCase.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* SendingTestCase.swift in Sources */,
 				CC86198D1DBA68E500A5AEFE /* BlackholeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,8 +642,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC3849541DBE5DB500DF5226 /* ResponsePromisesTestCase.swift in Sources */,
 				CC8239BA1DBE4BF70082F269 /* SendingPromisesTestCase.swift in Sources */,
 				CC7651B41DBE49C80077ACCC /* TestSession.swift in Sources */,
+				CC3849521DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift in Sources */,
 				CC8239B81DBE4B840082F269 /* BlackholeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

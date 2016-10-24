@@ -428,8 +428,8 @@ extension Blackhole: WCSessionDelegate {
         if let identifier = message[Key.Identifier] as? String, let listener = self.listeners[identifier] {
             let reply = listener.deliver(message[Key.Body])
             
-            if let replyData = reply as? Data {
-                replyHandler(replyData)
+            if let replyData = reply as? BlackholeDataConvertible {
+                replyHandler(replyData.dataRepresentation())
             }
             else {
                 // TODO: Handle!
@@ -480,7 +480,7 @@ extension Blackhole: WCSessionDelegate {
         }
         
         // Confirm reply data
-        guard let replyData = reply as? Data else {
+        guard let replyData = reply as? BlackholeDataConvertible else {
             return
         }
         

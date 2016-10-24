@@ -1,8 +1,9 @@
 import UIKit
 import XCTest
 import Blackhole
+import BrightFutures
 
-class ReceivingMessagesTestCase: BlackholeTestCase {
+class ReceivingPromisesTestCase: BlackholeTestCase {
     // MARK: - Basic Tests
     func testSimpleSendingReceiveSuccess() {
         let identifier = "someIdentifier"
@@ -24,16 +25,12 @@ class ReceivingMessagesTestCase: BlackholeTestCase {
         }
         receiver.addListener(messegeListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            try emitter.sendMessage(message, withIdentifier: identifier, success: {
-                sendExpectation.fulfill()
-                }, failure: { error in
-                    XCTAssert(false, "Error sending: \(error)")
-            })
-        }
-        catch {
+        emitter.promiseSendMessage(message, withIdentifier: identifier)
+        .onFailure { error in
             XCTAssert(false, "Error sending: \(error)")
+        }
+        .onSuccess {
+            sendExpectation.fulfill()
         }
         
         self.waitForExpectations(timeout: 5) { (error) in
@@ -71,17 +68,17 @@ class ReceivingMessagesTestCase: BlackholeTestCase {
         }
         receiver.addListener(messegeListener, forIdentifier: identifier)
         
-        do {
-            XCTAssert(self.session === emitter.session)
-            try emitter.sendMessage(message, withIdentifier: identifier)
-            try emitter.sendMessage(message, withIdentifier: identifier)
-            try emitter.sendMessage(message, withIdentifier: identifier, success: {
-                sendExpectation.fulfill()
-                }, failure: { error in
-                    XCTAssert(false, "Error sending: \(error)")
-            })
+        let _ = emitter.promiseSendMessage(message, withIdentifier: identifier)
+        .flatMap { _ -> Future<Void,BlackholeError> in
+            return self.emitter.promiseSendMessage(message, withIdentifier: identifier)
         }
-        catch {
+        .flatMap { _ -> Future<Void,BlackholeError> in
+            return self.emitter.promiseSendMessage(message, withIdentifier: identifier)
+        }
+        .onSuccess {
+            sendExpectation.fulfill()
+        }
+        .onFailure { error in
             XCTAssert(false, "Error sending: \(error)")
         }
         

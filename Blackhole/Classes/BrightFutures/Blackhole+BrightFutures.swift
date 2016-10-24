@@ -9,7 +9,7 @@
 import Foundation
 import BrightFutures
 
-func associatedObject<ValueType: AnyObject>(
+fileprivate func associatedObject<ValueType: AnyObject>(
     base: AnyObject,
     key: UnsafePointer<UInt8>,
     initialiser: () -> ValueType)
@@ -21,7 +21,7 @@ func associatedObject<ValueType: AnyObject>(
                                  .OBJC_ASSOCIATION_RETAIN)
         return associated
 }
-func associateObject<ValueType: AnyObject>(
+fileprivate func associateObject<ValueType: AnyObject>(
     base: AnyObject,
     key: UnsafePointer<UInt8>,
     value: ValueType) {
@@ -36,14 +36,14 @@ fileprivate class BlackholeContainer {
         return promisedSession.future
     }
 }
-fileprivate var entityKey: UInt8 = 0 // We still need this boilerplate
+fileprivate var veryCustomKey: UInt8 = 0 // We still need this boilerplate
 fileprivate extension Blackhole {
     fileprivate var blackholeContainer: BlackholeContainer { // cat is *effectively* a stored property
         get {
-            return associatedObject(base: self, key: &entityKey)
+            return associatedObject(base: self, key: &veryCustomKey)
             { return BlackholeContainer() } // Set the initial value of the var
         }
-        set { associateObject(base: self, key: &entityKey, value: newValue) }
+        set { associateObject(base: self, key: &veryCustomKey, value: newValue) }
     }
 }
 
@@ -55,7 +55,7 @@ extension Blackhole {
             return
         }
         
-        self.blackholeContainer.promisedSession.success(session)
+        self.blackholeContainer.promisedSession.trySuccess(session)
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -86,238 +86,89 @@ extension Blackhole {
         }
     }
     
-//    func promiseResponseForMessage<T:WormholeMessageMappable>(_ message: [String:AnyObject], withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
-//        return self.promiseSession()
-//            .flatMap { session -> Future<T, BlackholeError> in
-//                let promise = Promise<T,BlackholeError>()
-//                
-//                DispatchQueue.global(qos: .background).async {
-//                    let wormholeMessage: [String:AnyObject] = [
-//                        Key.Identifier: identifier as AnyObject,
-//                        Key.Body: message as AnyObject
-//                    ]
-//                    
-//                    DDLogCommunication("Sending message;\(identifier)")
-//                    session.sendMessage(wormholeMessage, replyHandler: { reply in
-//                        DDLogCommunication("Sending SUCCESS;\(identifier)")
-//                        if let response = T(message: reply as [String : AnyObject]) {
-//                            DDLogCommunication("Response Serialization SUCCESS;\(identifier)")
-//                            promise.success(response)
-//                        }
-//                        else {
-//                            DDLogCommunication("Response Serialization FAILURE;\(identifier)")
-//                            promise.failure(BlackholeError.unknownResponse(reply as [String : AnyObject]))
-//                        }
-//                        }, errorHandler: { error in
-//                            DDLogCommunication("Sending FAILURE;\(identifier);\(error)")
-//                            promise.failure(BlackholeError.sendingError(error))
-//                    })
-//                }
-//                
-//                return promise.future
-//        }
-//    }
-//    
-//    // MARK: - Promise Send Data
-//    func promiseSendObject(_ object: WormholeDataConvertible, withIdentifier identifier: String) -> Future<Void,BlackholeError> {
-//        let data = object.dataRepresentation()
-//        
-//        if data.count < DataSize.MessageSize {
-//            return self.promiseSendObjectAsMessage(data, withIdentifier: identifier)
-//        }
-//        else {
-//            return self.promiseSendObjectAsFile(data, withIdentifier: identifier)
-//        }
-//    }
-//    
-//    func promiseResponseForObject<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
-//        let data = object.dataRepresentation()
-//        
-//        if data.count < DataSize.MessageSize {
-//            return self.promiseResponseForObjectAsMessage(data, withType: type, andIdentifier: identifier)
-//        }
-//        else {
-//            return self.promiseResponseForObjectAsFile(data, withType: type, withIdentifier: identifier)
-//        }
-//        
-//    }
-//    
-//    // MARK: - Send data as message
-//    func promiseSendObjectAsMessage(_ object: WormholeDataConvertible, withIdentifier identifier: String) -> Future<Void,BlackholeError> {
-//        return self.promiseSession()
-//            .flatMap { session -> Future<Void, BlackholeError> in
-//                let promise = Promise<Void,BlackholeError>()
-//                
-//                DispatchQueue.global(qos: .background).async {
-//                    let wormholeMessage: [String:AnyObject] = [
-//                        Key.Identifier: identifier as AnyObject,
-//                        Key.Body: object.dataRepresentation() as AnyObject
-//                    ]
-//                    
-//                    let wormholeData = NSKeyedArchiver.archivedData(withRootObject: wormholeMessage as NSDictionary)
-//                    
-//                    DDLogCommunication("Sending data;\(identifier)")
-//                    session.sendMessageData(wormholeData, replyHandler: { _ in
-//                        DDLogCommunication("Sending SUCCESS;\(identifier)")
-//                        promise.success()
-//                        }, errorHandler: { error in
-//                            DDLogCommunication("Sending FAILURE;\(identifier);\(error)")
-//                            promise.failure(BlackholeError.sendingError(error))
-//                    })
-//                }
-//                
-//                return promise.future
-//        }
-//    }
-//    
-//    func promiseResponseForObjectAsMessage<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
-//        return self.promiseSession().flatMap { session -> Future<T, BlackholeError> in
-//            let promise = Promise<T,BlackholeError>()
-//            
-//            DispatchQueue.global(qos: .background).async {
-//                let wormholeMessage: [String:AnyObject] = [
-//                    Key.Identifier: identifier as AnyObject,
-//                    Key.Body: object.dataRepresentation() as AnyObject
-//                ]
-//                
-//                let wormholeData = NSKeyedArchiver.archivedData(withRootObject: wormholeMessage as NSDictionary)
-//                
-//                DDLogCommunication("Sending data;\(identifier)")
-//                session.sendMessageData(wormholeData, replyHandler: { reply in
-//                    DDLogCommunication("Sending SUCCESS;\(identifier)")
-//                    if let response = T(data: reply) {
-//                        DDLogCommunication("Response Serialization SUCCESS;\(identifier)")
-//                        promise.success(response)
-//                    }
-//                    else {
-//                        DDLogCommunication("Response Serialization FAILURE;\(identifier)")
-//                        promise.failure(BlackholeError.invalidData)
-//                    }
-//                    }, errorHandler: { error in
-//                        DDLogCommunication("Sending FAILURE;\(identifier);\(error)")
-//                        promise.failure(BlackholeError.sendingError(error))
-//                })
-//            }
-//            
-//            return promise.future
-//        }
-//    }
-//    
-//    // MARK: - Send Data as File
-//    func promiseSendObjectAsFile(_ object: WormholeDataConvertible, withIdentifier identifier: String) -> Future<Void,BlackholeError> {
-//        return self.promiseSession()
-//            .flatMap { session -> Future<Void, BlackholeError> in
-//                let promise = Promise<Void,BlackholeError>()
-//                
-//                DispatchQueue.global(qos: .background).async {
-//                    guard let tempUrl = FileManager.cacheTemporaryFileUrl() else {
-//                        promise.failure(BlackholeError.invalidData)
-//                        return
-//                    }
-//                    
-//                    let wormholeMessage: [String:AnyObject] = [
-//                        Key.Identifier: identifier as AnyObject,
-//                        Key.Body: object.dataRepresentation() as AnyObject
-//                    ]
-//                    
-//                    let wormholeData = NSKeyedArchiver.archivedData(withRootObject: wormholeMessage as NSDictionary)
-//                    
-//                    do {
-//                        try wormholeData.write(to: tempUrl)
-//                    }
-//                    catch {
-//                        promise.failure(BlackholeError.unknown)
-//                        return
-//                    }
-//                    
-//                    DDLogCommunication("Sending file;\(tempUrl)")
-//                    
-//                    // Add file transfer completion block
-//                    self.fileTransfers[tempUrl.absoluteString] = { error in
-//                        self.fileTransfers.removeValue(forKey: tempUrl.absoluteString)
-//                        
-//                        if error == nil {
-//                            DDLogCommunication("Sending file success;\(tempUrl)")
-//                            promise.success()
-//                        }
-//                        else {
-//                            DDLogCommunication("Sending failure;\(tempUrl)")
-//                            promise.failure(BlackholeError.sendingError(error!))
-//                        }
-//                    }
-//                    
-//                    session.transferFile(tempUrl, metadata: nil)
-//                }
-//                
-//                return promise.future
-//        }
-//    }
-//    
-//    func promiseResponseForObjectAsFile<T:WormholeDataMappable>(_ object: WormholeDataConvertible, withType type: T.Type, withIdentifier identifier: String) -> Future<T,BlackholeError> {
-//        return self.promiseSession()
-//            .flatMap { session -> Future<T, BlackholeError> in
-//                let promise = Promise<T,BlackholeError>()
-//                
-//                DispatchQueue.global(qos: .background).async {
-//                    guard let tempUrl = FileManager.cacheTemporaryFileUrl() else {
-//                        promise.failure(BlackholeError.invalidData)
-//                        return
-//                    }
-//                    
-//                    let wormholeMessage: [String:AnyObject] = [
-//                        Key.Identifier: identifier as AnyObject,
-//                        Key.Body: object.dataRepresentation() as AnyObject,
-//                        Key.FileTransferName: tempUrl.absoluteString as AnyObject
-//                    ]
-//                    
-//                    let wormholeData = NSKeyedArchiver.archivedData(withRootObject: wormholeMessage as NSDictionary)
-//                    
-//                    do {
-//                        try wormholeData.write(to: tempUrl)
-//                    }
-//                    catch {
-//                        promise.failure(BlackholeError.unknown)
-//                        return
-//                    }
-//                    
-//                    DDLogCommunication("Sending file;\(tempUrl)")
-//                    
-//                    // Add file transfer completion block
-//                    self.fileTransfers[tempUrl.absoluteString] = { error in
-//                        self.fileTransfers.removeValue(forKey: tempUrl.absoluteString)
-//                        
-//                        if error == nil {
-//                            DDLogCommunication("Sending file success;\(tempUrl)")
-//                        }
-//                        else {
-//                            DDLogCommunication("Sending failure;\(tempUrl)")
-//                            promise.tryFailure(BlackholeError.sendingError(error!))
-//                        }
-//                    }
-//                    
-//                    // Prepare response listener
-//                    let responseListener = DataListener { reply in
-//                        DDLogCommunication("RESPONSE SUCCESS;\(identifier)")
-//                        if let response = T(data: reply) {
-//                            DDLogCommunication("Response Serialization SUCCESS;\(identifier)")
-//                            promise.success(response)
-//                        }
-//                        else {
-//                            DDLogCommunication("Response Serialization FAILURE;\(identifier)")
-//                            promise.failure(BlackholeError.invalidData)
-//                        }
-//                        
-//                        return nil
-//                    }
-//                    responseListener.autoremoved = true
-//                    self.addListener(responseListener, forIdentifier: tempUrl.absoluteString)
-//                    
-//                    // Send file
-//                    session.transferFile(tempUrl, metadata: nil)
-//                }
-//                
-//                return promise.future
-//        }
-//    }
+    public func promiseResponseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
+        return self.promiseSession()
+        .flatMap { _ -> Future<T, BlackholeError> in
+            let promise = Promise<T,BlackholeError>()
+            
+            do {
+                try self.responseForMessage(message, withType: T.self, andIdentifier: identifier, success: { object in
+                    promise.success(object)
+                }, failure: { error in
+                    promise.failure(error ?? BlackholeError.unknown)
+                })
+            }
+            catch {
+                promise.failure((error as? BlackholeError) ?? BlackholeError.unknown)
+            }
+            
+            return promise.future
+        }
+    }
+   
+    
+    public func promiseObjectForMessage<T:BlackholeDataMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
+        
+        let messageObject: NSDictionary = message.messageRepresentation() as NSDictionary
+        
+        return self.promiseSession()
+        .flatMap { _ -> Future<T, BlackholeError> in
+            let promise = Promise<T,BlackholeError>()
+            
+            do {
+                try self.responseForObject(messageObject, withType: T.self, andIdentifier: identifier, success: { object in
+                    promise.success(object)
+                }, failure: { error in
+                    promise.failure(error ?? BlackholeError.unknown)
+                })
+            }
+            catch {
+                promise.failure((error as? BlackholeError) ?? BlackholeError.unknown)
+            }
+            
+            return promise.future
+        }
+    }
+    
+    // MARK: - Promise Send Data
+    public func promiseSendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String) -> Future<Void,BlackholeError> {
+        return self.promiseSession()
+        .flatMap { _ -> Future<Void, BlackholeError> in
+            let promise = Promise<Void,BlackholeError>()
+            
+            do {
+                try self.sendObject(object, withIdentifier: identifier, success: {
+                    promise.success()
+                }, failure: { error in
+                    promise.failure(error ?? BlackholeError.unknown)
+                })
+            }
+            catch {
+                promise.failure((error as? BlackholeError) ?? BlackholeError.unknown)
+            }
+            
+            return promise.future
+        }
+    }
+    
+    public func promiseResponseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String) -> Future<T,BlackholeError> {
+        return self.promiseSession()
+        .flatMap { _ -> Future<T, BlackholeError> in
+            let promise = Promise<T,BlackholeError>()
+            
+            do {
+                try self.responseForObject(object, withType: T.self, andIdentifier: identifier, success: { object in
+                    promise.success(object)
+                }, failure: { error in
+                    promise.failure(error ?? BlackholeError.unknown)
+                })
+            }
+            catch {
+                promise.failure((error as? BlackholeError) ?? BlackholeError.unknown)
+            }
+            
+            return promise.future
+        }
+    }
     
 }

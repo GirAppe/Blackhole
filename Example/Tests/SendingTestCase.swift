@@ -2,7 +2,7 @@ import UIKit
 import XCTest
 import Blackhole
 
-class SendingMessagesTestCase: BlackholeTestCase {
+class SendingTestCase: BlackholeTestCase {
     // MARK: - Basic Tests
     func testSimpleSendingSuccess() {
         let identifier = "someIdentifier"
