@@ -4,6 +4,7 @@ target 'Blackhole_Example' do
   pod 'Blackhole', :path => '../'
 
   target 'Blackhole_Tests' do
+    pod 'Blackhole', :path => '../'
     inherit! :search_paths
 
     

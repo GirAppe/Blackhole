@@ -13,8 +13,13 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* SendingMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
+		CC86198B1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */; };
+		CC86198D1DBA68E500A5AEFE /* BlackholeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */; };
+		CC86198F1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */; };
+		CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
+		CCDDB84B1DBD2BAB00D4AB4C /* blackhole-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +45,17 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Blackhole_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackhole_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingMessagesTestCase.swift; sourceTree = "<group>"; };
 		696552B8AF98A9FBAF714C93 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		90D089C6C2A75C108603150C /* Pods_Blackhole_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930EEF755D6B816E1E66E742 /* Pods-Blackhole_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example/Pods-Blackhole_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Tests/Pods-Blackhole_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivingMessagesTestCase.swift; sourceTree = "<group>"; };
+		CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackholeTestCase.swift; sourceTree = "<group>"; };
+		CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessagesTestCase.swift; sourceTree = "<group>"; };
+		CC87A82A1DBA2C710099CD4C /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
+		CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blackhole-image.jpg"; sourceTree = "<group>"; };
 		DACDC7FFD9FD166C8783021A /* Blackhole.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Blackhole.podspec; path = ../Blackhole.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +125,11 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				CC87A82A1DBA2C710099CD4C /* TestSession.swift */,
+				CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */,
+				607FACEB1AFB9204008FA782 /* SendingMessagesTestCase.swift */,
+				CC86198A1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift */,
+				CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -124,6 +138,7 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -210,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -258,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDDB84B1DBD2BAB00D4AB4C /* blackhole-image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */,
+				CC86198F1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift in Sources */,
+				CC86198B1DBA686A00A5AEFE /* ReceivingMessagesTestCase.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* SendingMessagesTestCase.swift in Sources */,
+				CC86198D1DBA68E500A5AEFE /* BlackholeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +437,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -441,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -462,8 +484,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -479,9 +503,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -490,8 +515,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FB3709B03E5AD3C9B64268B /* Pods-Blackhole_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -504,8 +531,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930EEF755D6B816E1E66E742 /* Pods-Blackhole_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -518,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -538,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F7DFAAA6A095F7F4ABD81DA /* Pods-Blackhole_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
