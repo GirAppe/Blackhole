@@ -247,7 +247,7 @@ class ResponseMessagesTestCase: BlackholeTestCase {
             XCTAssert(false, "Error sending: \(error)")
         }
         
-        self.waitForExpectations(timeout: 12) { (error) in
+        self.waitForExpectations(timeout: 60) { (error) in
             if let error = error {
                 XCTAssert(false, "Error sending: \(error)")
             }
