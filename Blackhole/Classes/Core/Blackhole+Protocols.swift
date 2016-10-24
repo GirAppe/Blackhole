@@ -46,17 +46,21 @@ extension NSDictionary: BlackholeDataConvertible {
 }
 
 extension Array: BlackholeDataConvertible {
-    
     public func dataRepresentation() -> Data {
         let anySelf = self.mapExisting { $0 }
         return NSArray(array: anySelf).dataRepresentation()
     }
-    
+}
+
+extension UIImage: BlackholeDataConvertible {
+    // By default sends image as PNG
+    public func dataRepresentation() -> Data {
+        return UIImagePNGRepresentation(self)!
+    }
 }
 
 // MARK: - Default extensions - BlackholeMessageMappable
 extension Dictionary: BlackholeMessageMappable {
-    
     public init?(message: BlackholeMessage){
         self.init()
         
@@ -64,11 +68,9 @@ extension Dictionary: BlackholeMessageMappable {
             self[(key as! Key)] = (message[key]!) as? Value
         }
     }
-    
 }
 
 extension Dictionary: BlackholeMessageConvertible {
-    
     public func messageRepresentation() -> BlackholeMessage {
         var message: BlackholeMessage = [:]
         
@@ -80,20 +82,16 @@ extension Dictionary: BlackholeMessageConvertible {
         
         return message
     }
-    
 }
 
 // MARK: - Default extensions - BlackholeDataMappable
 extension Data: BlackholeDataMappable {
-
     public init?(data: Data) {
         self.init(data)
     }
-    
 }
 
 extension Dictionary: BlackholeDataMappable {
-    
     // Only works for dictionaries as [String:Any]
     public init?(data: Data) {
         guard let nsmessage = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSDictionary else {
@@ -106,7 +104,6 @@ extension Dictionary: BlackholeDataMappable {
         
         self.init(message: message)
     }
-    
 }
 
 extension UIImage: BlackholeDataMappable { }

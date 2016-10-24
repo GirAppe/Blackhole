@@ -30,6 +30,8 @@ class TestSession: BlackholeSession {
     
     let session = WCSession.default()
     
+    var temporaryFilesThatShouldBeDeleted: [URL] = []   // Check later, if files removed
+    
     // MARK: - Lifecycle
     init() {
         
@@ -73,6 +75,20 @@ class TestSession: BlackholeSession {
         }
     }
     
+    func emit(file: URL) {
+        guard let result = emitResults.first else {
+            return
+        }
+        
+        emitResults.remove(at: 0)
+        
+        if result.success {
+            passFile(file)
+        }
+        else {
+            failFile(file, withError: result.error)
+        }
+    }
     
     func emit(result: EmitResult) {
         emitResults.append(result)
@@ -105,6 +121,39 @@ class TestSession: BlackholeSession {
         data.errorHandler?(error)
     }
     
+    private func prepareNewFile(_ file: URL) -> URL {
+        let url = FileManager.cacheTemporaryFileUrl()!
+        do {
+            let data = try Data(contentsOf: file)
+            try data.write(to: url)
+        }
+        catch {
+            assertionFailure()
+        }
+        return url
+    }
+    
+    private func passFile(_ file: URL) {
+        let newFile = prepareNewFile(file) // assure copy of file created
+        temporaryFilesThatShouldBeDeleted.append(newFile)
+        let ecnFile = TestFile(newFile)
+        let ecoFileTransfer = TestFileTransfer(file)
+        
+        // Notify send success
+        emitter.session(session, didFinish: ecoFileTransfer, error: nil)
+        // Notify receive success
+        receiver.session(session, didReceive: ecnFile)
+        
+    }
+    
+    private func failFile(_ file: URL, withError error: Error!) {
+        // TODO: Implement
+        let ecoFileTransfer = TestFileTransfer(file)
+        
+        // Notify send success
+        emitter.session(session, didFinish: ecoFileTransfer, error: NSError())
+    }
+    
     // MARK: - Session Conformance
     func activate() {
     }
@@ -126,7 +175,9 @@ class TestSession: BlackholeSession {
     }
     
     func transferFile(_ file: URL, metadata: [String : Any]?) -> WCSessionFileTransfer {
-        //todo
+        emit(file: file)
+        
+        temporaryFilesThatShouldBeDeleted.append(file)
         
         return WCSessionFileTransfer()
     }
@@ -137,4 +188,30 @@ class TestSession: BlackholeSession {
         let error: Error = NSError()
     }
     
+}
+
+class TestFile: WCSessionFile {
+    var testUrl: URL!
+    
+    override var fileURL: URL {
+        return self.testUrl
+    }
+    
+    init(_ url: URL) {
+        self.testUrl = url
+        super.init()
+    }
+}
+
+class TestFileTransfer: WCSessionFileTransfer {
+    var testFile: TestFile
+    
+    override var file: WCSessionFile {
+        return self.testFile
+    }
+    
+    init(_ url: URL) {
+        self.testFile = TestFile(url)
+        super.init()
+    }
 }

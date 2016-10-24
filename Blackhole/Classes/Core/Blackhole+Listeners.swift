@@ -77,3 +77,45 @@ open class DataListener: Listener {
     }
     
 }
+
+open class ObjectListener<T:BlackholeDataMappable>: Listener {
+    
+    // MARK: - Properties
+    open let time = Date()
+    var handler: ((T)->(BlackholeDataConvertible?))?
+    private var voidHandler: ((T)->(Void))?
+    var autoremoved: Bool = false
+    weak open var wormhole: Blackhole?
+    
+    // MARK: - Lifecycle
+    public init<R:BlackholeDataConvertible>(type: T.Type, responseType: R.Type, handler: @escaping (T)->(R?)) {
+        self.handler = handler
+    }
+    public init(type: T.Type, handler: @escaping (T)->()) {
+        self.voidHandler = handler
+    }
+    
+    // MARK: - Public
+    open func deliver(_ object: Any?) -> Any? {
+        if self.autoremoved {
+            self.wormhole?.removeListener(self)
+        }
+        
+        guard let data = object as? Data else {
+            return nil
+        }
+        
+        guard let object = T(data: data) else {
+            return nil
+        }
+
+        if let handler = self.handler {
+            return handler(object)
+        }
+        else {
+            self.voidHandler?(object)
+            return nil
+        }
+    }
+    
+}

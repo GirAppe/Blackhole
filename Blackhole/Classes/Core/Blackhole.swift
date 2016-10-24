@@ -191,7 +191,8 @@ open class Blackhole: NSObject {
                 Key.Body: object.dataRepresentation()
             ]
             
-            let wormholeData = NSKeyedArchiver.archivedData(withRootObject: wormholeMessage as NSDictionary)
+            let nsMessage = wormholeMessage as NSDictionary
+            let wormholeData = NSKeyedArchiver.archivedData(withRootObject: nsMessage)
             
             // Store as file
             do {

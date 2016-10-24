@@ -19,6 +19,7 @@
 		CC86198D1DBA68E500A5AEFE /* BlackholeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */; };
 		CC86198F1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */; };
 		CC87A82B1DBA2C710099CD4C /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87A82A1DBA2C710099CD4C /* TestSession.swift */; };
+		CCDDB84B1DBD2BAB00D4AB4C /* blackhole-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		CC86198C1DBA68E500A5AEFE /* BlackholeTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackholeTestCase.swift; sourceTree = "<group>"; };
 		CC86198E1DBA69C800A5AEFE /* ResponseMessagesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessagesTestCase.swift; sourceTree = "<group>"; };
 		CC87A82A1DBA2C710099CD4C /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
+		CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blackhole-image.jpg"; sourceTree = "<group>"; };
 		DACDC7FFD9FD166C8783021A /* Blackhole.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Blackhole.podspec; path = ../Blackhole.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCDDB8491DBD2B5500D4AB4C /* blackhole-image.jpg */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -270,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDDB84B1DBD2BAB00D4AB4C /* blackhole-image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

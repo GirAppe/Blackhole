@@ -205,4 +205,57 @@ class ResponseMessagesTestCase: BlackholeTestCase {
         }
     }
     
+    // MARK: - File sending tests
+    func testImageSendingResponseSuccess() {
+        let identifier = "someIdentifier"
+        
+        let bundle = Bundle(for: ResponseMessagesTestCase.self)
+        
+        guard let imagePath = bundle.path(forResource: "blackhole-image", ofType: "jpg") else {
+            XCTAssert(false,"Cannot load image path")
+            return
+        }
+        
+        guard let imageSent = UIImage(contentsOfFile: imagePath) else {
+            XCTAssert(false,"Cannot load image")
+            return
+        }
+        
+        let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
+        let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
+        
+        self.session.emit(result: TestSession.EmitResult(success: true))
+
+        let imageListener = ObjectListener(type: UIImage.self) { image in
+            let data = image.dataRepresentation()
+            
+            XCTAssertEqual(data, imageSent.dataRepresentation())
+            
+            receiveExpectation.fulfill()
+        }
+        receiver.addListener(imageListener, forIdentifier: identifier)
+        
+        do {
+            XCTAssert(self.session === emitter.session)
+            try emitter.sendObject(imageSent, withIdentifier: identifier, success: { 
+                sendExpectation.fulfill()
+            }, failure: { error in
+                XCTAssert(false, "Failure sending: \(error)")
+            })
+        }
+        catch {
+            XCTAssert(false, "Error sending: \(error)")
+        }
+        
+        self.waitForExpectations(timeout: 12) { (error) in
+            if let error = error {
+                XCTAssert(false, "Error sending: \(error)")
+            }
+            
+            for tempFile in self.session.temporaryFilesThatShouldBeDeleted {
+                XCTAssertFalse(FileManager.default.fileExists(atPath: tempFile.absoluteString), "Temp file not deleted!")
+            }
+        }
+    }
+    
 }
