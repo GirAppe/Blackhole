@@ -217,7 +217,7 @@ open class Blackhole: NSObject {
                 }
             }
             
-            session.transferFile(tempUrl, metadata: nil)
+            let _ = session.transferFile(tempUrl, metadata: nil)
         }
     }
     
@@ -306,7 +306,7 @@ open class Blackhole: NSObject {
             self.addListener(responseListener, forIdentifier: tempUrl.absoluteString)
             
             // Send file
-            session.transferFile(tempUrl, metadata: nil)
+            let _ = session.transferFile(tempUrl, metadata: nil)
         }
     }
     
