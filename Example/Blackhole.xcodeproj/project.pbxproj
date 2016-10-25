@@ -563,7 +563,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FB3709B03E5AD3C9B64268B /* Pods-Blackhole_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -579,7 +578,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930EEF755D6B816E1E66E742 /* Pods-Blackhole_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -595,7 +593,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABD6D131EF072682B24B48A1 /* Pods-Blackhole_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -617,7 +614,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F7DFAAA6A095F7F4ABD81DA /* Pods-Blackhole_Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
