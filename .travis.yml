@@ -13,4 +13,3 @@ script:
 # - set -o pipefail && xcodebuild clean build test -workspace Example/Blackhole.xcworkspace -scheme Blackhole-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
 - xcodebuild clean build test -workspace Example/Blackhole.xcworkspace -scheme Blackhole-Example -sdk iphonesimulator10.0 -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty
-- xcodebuild clean build test -workspace Example/Blackhole.xcworkspace -scheme Blackhole_Example-BrightFutures -sdk iphonesimulator10.0 -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty

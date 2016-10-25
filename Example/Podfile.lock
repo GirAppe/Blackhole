@@ -1,15 +1,11 @@
 PODS:
-  - Blackhole (0.1.4):
-    - Blackhole/Core (= 0.1.4)
   - Blackhole/BrightFutures (0.1.4):
     - BrightFutures (~> 5.0.1)
-  - Blackhole/Core (0.1.4)
   - BrightFutures (5.0.1):
     - Result (~> 3.0)
   - Result (3.0.0)
 
 DEPENDENCIES:
-  - Blackhole (from `../`)
   - Blackhole/BrightFutures (from `../`)
 
 EXTERNAL SOURCES:
@@ -21,6 +17,6 @@ SPEC CHECKSUMS:
   BrightFutures: 72fbc51227fa912ccdd5af04f2f6cea0b2d401a6
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
 
-PODFILE CHECKSUM: 2e50e2ff018ccff81f6294b5631c6ba3b12da5f6
+PODFILE CHECKSUM: 91c8429afa6af81dcffedb36f4c88d44b646f226
 
 COCOAPODS: 1.1.1
