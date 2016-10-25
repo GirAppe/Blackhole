@@ -1,11 +1,9 @@
 use_frameworks!
 
 target 'Blackhole_Example' do
-  pod 'BrightFutures', '~> 5.0.1'
   pod 'Blackhole/BrightFutures', :path => '../'
 
   target 'Blackhole_Tests' do
-    pod 'BrightFutures', '~> 5.0.1'
     pod 'Blackhole/BrightFutures', :path => '../'
     inherit! :search_paths
 
