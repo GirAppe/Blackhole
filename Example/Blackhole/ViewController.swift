@@ -7,18 +7,30 @@
 //
 
 import UIKit
+import Blackhole
 
 class ViewController: UIViewController {
-
+    // MARK: - Outlets
+    @IBOutlet weak var catImageView: UIImageView!
+    @IBOutlet weak var catNameTextField: UITextField!
+    @IBOutlet weak var catBreedSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var sendCatButton: UIButton!
+    
+    // MARK: - Properties
+    var blackhole = Blackhole()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Actions
+    @IBAction func sendCatAction(_ sender: AnyObject) {
     }
+    
+    // MARK: - Navigation
 
 }
 
