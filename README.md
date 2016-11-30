@@ -1,4 +1,5 @@
-# Blackhole
+
+# ![Blackhole logo](https://raw.githubusercontent.com/GirAppe/Blackhole/develop/Icon-60%402x.png) Blackhole
 
 [![CI Status](https://api.travis-ci.org/GirAppe/Blackhole.svg?style=flat&branch=master)](https://travis-ci.org/GirAppe/Blackhole)
 [![Version](https://img.shields.io/cocoapods/v/Blackhole.svg?style=flat)](http://cocoapods.org/pods/Blackhole)
@@ -8,6 +9,8 @@
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+
 
 ## Requirements
 
@@ -19,6 +22,12 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "Blackhole"
 ```
+
+or
+
+````ruby
+pod "Blackhole/BrightFutures"
+````
 
 ## Author
 
