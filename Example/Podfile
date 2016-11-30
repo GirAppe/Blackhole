@@ -1,12 +1,19 @@
 use_frameworks!
 
-target 'Blackhole_Example' do
+target 'Blackhole Example' do
   pod 'Blackhole/BrightFutures', :path => '../'
 
-  target 'Blackhole_Tests' do
+  target 'Blackhole Tests' do
     pod 'Blackhole/BrightFutures', :path => '../'
     inherit! :search_paths
 
+  end
+
+  target 'Blackhole Example Watch Extension' do
+    platform :watchos, '3.0'
+    pod 'Blackhole/BrightFutures', :path => '../'
+    inherit! :search_paths
 
   end
+
 end

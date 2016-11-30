@@ -9,16 +9,14 @@
 import Foundation
 import WatchConnectivity
 
-// MARK: - Typedefs
-public typealias BlackholeMessage = [String:Any]
-public typealias BlackholeSuccessClosure = ()->()
-public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
 let BlackholeStartedSessionNotification = "BlackholeDidStartedSession"
 
 // MARK: - Blackhole
+/// Main communication class - serves as emitter and responder
 open class Blackhole: NSObject {
     // MARK: - Private Properties
+    /// Current communication session
     fileprivate(set) public var session: BlackholeSession? {
         didSet {
             if let _ = self.session {
@@ -32,6 +30,9 @@ open class Blackhole: NSObject {
     let sessionType: BlackholeSession.Type
     
     // MARK: - Lifecycle
+    /// Initializes new blackhole, with given session type
+    ///
+    /// - Parameter type: Session type - default is WatchConnectivity session
     public init(type: BlackholeSession.Type = WCSession.self){
         self.sessionType = type
         super.init()
@@ -39,6 +40,9 @@ open class Blackhole: NSObject {
         activate()
     }
     
+    /// Initializes new blackhole, with given session instance
+    ///
+    /// - Parameter type: Session instance
     public convenience init<T:BlackholeSession>(session: T) {
         self.init(type: T.self)
         
@@ -46,15 +50,27 @@ open class Blackhole: NSObject {
     }
     
     // MARK: - Listeners
+    /// Adds given listener to Blackhole responding chain. 
+    /// When communication arrives, listener matching identifier will be triggered
+    ///
+    /// - Parameters:
+    ///   - listener: Listener instance
+    ///   - identifier: Communication identifier
     open func addListener(_ listener: Listener, forIdentifier identifier: String) {
         self.listeners[identifier] = listener
         listener.wormhole = self
     }
     
+    /// Removes listener for given identifier from responding chain
+    ///
+    /// - Parameter identifier: Listener identifier
     open func removeListener(forIdentifier identifier: String) {
         self.listeners.removeValue(forKey: identifier)
     }
     
+    /// Removes particular listener from responding chain
+    ///
+    /// - Parameter listener: Listener to remove
     open func removeListener(_ listener: Listener) {
         let index = self.listeners.index { _,tested -> Bool in
             return tested === listener
@@ -66,6 +82,15 @@ open class Blackhole: NSObject {
     }
     
     // MARK: - Messages
+    
+    /// Sends given message (object conforming to BlackholeMessageConvertible) to the counterpart app.
+    ///
+    /// - Parameters:
+    ///   - message: object conforming to BlackholeMessageConvertible
+    ///   - identifier: identifier of communicaiton message
+    ///   - success: succes block
+    ///   - failure: failure block
+    /// - Throws: BlackholeError
     open func sendMessage(_ message: BlackholeMessageConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
@@ -93,6 +118,15 @@ open class Blackhole: NSObject {
         }
     }
     
+    /// Sends given message (object conforming to BlackholeMessageConvertible) to the counterpart app. Awaits response of given type (conforming to BlackholeMessageMappable), and triggers succes block after response received.
+    ///
+    /// - Parameters:
+    ///   - message: object conforming to BlackholeMessageConvertible
+    ///   - type: response type, conforming to BlackholeMessageMappable
+    ///   - identifier: identifier of communicaiton message
+    ///   - success: succes block
+    ///   - failure: failure block
+    /// - Throws: BlackholeError
     open func responseForMessage<T:BlackholeMessageMappable>(_ message: BlackholeMessageConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         guard let session = session else {
             throw BlackholeError.sessionInactive
@@ -126,6 +160,14 @@ open class Blackhole: NSObject {
     }
     
     // MARK: - Data
+    /// Sends given object (object conforming to BlackholeDataConvertible) to the counterpart app.
+    ///
+    /// - Parameters:
+    ///   - object: object conforming to BlackholeDataConvertible
+    ///   - identifier: identifier of communicaiton message
+    ///   - success: succes block
+    ///   - failure: failure block
+    /// - Throws: BlackholeError
     open func sendObject(_ object: BlackholeDataConvertible, withIdentifier identifier: String, success:BlackholeSuccessClosure? = nil, failure:BlackholeFailureClosure? = nil) throws {
         let data = object.dataRepresentation()
         
@@ -137,6 +179,15 @@ open class Blackhole: NSObject {
         }
     }
     
+    /// Sends given object (object conforming to BlackholeDataConvertible) to the counterpart app. Awaits response of given type (conforming to BlackholeDataMappable), and triggers succes block after response received.
+    ///
+    /// - Parameters:
+    ///   - object: object conforming to BlackholeDataConvertible
+    ///   - type: response type, confirming to BlackholeDataMappable
+    ///   - identifier: identifier of communicaiton message
+    ///   - success: succes block
+    ///   - failure: failure block
+    /// - Throws: BlackholeError
     open func responseForObject<T:BlackholeDataMappable>(_ object: BlackholeDataConvertible, withType type: T.Type, andIdentifier identifier: String, success: ((T)->())?, failure: BlackholeFailureClosure?) throws {
         let data = object.dataRepresentation()
         
@@ -321,6 +372,7 @@ open class Blackhole: NSObject {
     // MARK: - Helpers
     
     // MARK: - Activation
+    /// Activate blackhole - trigerred automaticaly in init
     open func activate() {
         if session == nil {
             session = sessionType.main()
@@ -329,6 +381,7 @@ open class Blackhole: NSObject {
         }
     }
     
+    /// Invalidates Blackhole - after that, activate() has to be called to allow communication.
     open func invalidate() {
         session?.delegate = nil
         session = nil

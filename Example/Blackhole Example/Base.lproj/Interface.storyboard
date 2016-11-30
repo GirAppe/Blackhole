@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Blackhole_Example_Watch_Extension">
+                    <items>
+                        <label width="1" alignment="left" text="Starting..." textAlignment="center" numberOfLines="0" id="lRD-QE-eda"/>
+                        <separator alignment="left" id="sC6-Iz-kaD"/>
+                        <imageView width="1" height="70" alignment="left" contentMode="scaleAspectFit" id="ASK-VO-kAt"/>
+                        <label width="1" alignment="left" id="03N-1Q-jg6"/>
+                        <label width="1" alignment="left" id="g1t-iq-aEI"/>
+                    </items>
+                    <connections>
+                        <outlet property="breedLabel" destination="g1t-iq-aEI" id="9V8-am-GFc"/>
+                        <outlet property="imageView" destination="ASK-VO-kAt" id="df0-3C-Ziy"/>
+                        <outlet property="nameLabel" destination="03N-1Q-jg6" id="KYa-nD-jXJ"/>
+                        <outlet property="titleLabel" destination="lRD-QE-eda" id="oFu-mR-fzO"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>

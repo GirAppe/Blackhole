@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCADB83C1DBE3D160007117D"
-               BuildableName = "Blackhole_Example-BrightFutures.app"
-               BlueprintName = "Blackhole_Example-BrightFutures"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "Blackhole Example.app"
+               BlueprintName = "Blackhole Example"
+               ReferencedContainer = "container:Blackhole.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Blackhole Tests.xctest"
+               BlueprintName = "Blackhole Tests"
                ReferencedContainer = "container:Blackhole.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC7651AF1DBE49C80077ACCC"
-               BuildableName = "Blackhole_Tests-BrightFutures.xctest"
-               BlueprintName = "Blackhole_Tests-BrightFutures"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "Blackhole Tests.xctest"
+               BlueprintName = "Blackhole Tests"
                ReferencedContainer = "container:Blackhole.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCADB83C1DBE3D160007117D"
-            BuildableName = "Blackhole_Example-BrightFutures.app"
-            BlueprintName = "Blackhole_Example-BrightFutures"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Blackhole Example.app"
+            BlueprintName = "Blackhole Example"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCADB83C1DBE3D160007117D"
-            BuildableName = "Blackhole_Example-BrightFutures.app"
-            BlueprintName = "Blackhole_Example-BrightFutures"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Blackhole Example.app"
+            BlueprintName = "Blackhole Example"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -84,9 +98,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCADB83C1DBE3D160007117D"
-            BuildableName = "Blackhole_Example-BrightFutures.app"
-            BlueprintName = "Blackhole_Example-BrightFutures"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "Blackhole Example.app"
+            BlueprintName = "Blackhole Example"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

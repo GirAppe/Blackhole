@@ -10,6 +10,7 @@ import Foundation
 import WatchConnectivity
 
 // MARK: - Listener protocol
+/// Adopting listener protocol allows responding to incoming communication
 public protocol Listener: class {
     var time: Date { get }
     weak var wormhole: Blackhole? { get set }
@@ -18,6 +19,7 @@ public protocol Listener: class {
 
 // MARK: - Default count of timeout value
 extension Listener {
+    /// Unimplemented
     var timeoutValue: TimeInterval { return abs(self.time.timeIntervalSinceNow) }
 }
 
