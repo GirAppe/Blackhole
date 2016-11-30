@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* SendingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SendingTestCase.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
+		8287D7DF1A484715A9DA6BE1 /* Pods_Blackhole_Example_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C58E02C431FBE3CA0633546 /* Pods_Blackhole_Example_Watch_Extension.framework */; };
 		CC0454E11DBF40C100B74396 /* SendingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8239B91DBE4BF70082F269 /* SendingPromisesTestCase.swift */; };
 		CC0454E21DBF40C100B74396 /* ReceivingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849511DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift */; };
 		CC0454E31DBF40C100B74396 /* ResponsePromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849531DBE5DB500DF5226 /* ResponsePromisesTestCase.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0572D813D06DB13CE367D044 /* Pods-Blackhole Example Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		12133B11A6DF8DF0641CC78D /* Pods-Blackhole Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Watch Extension/Pods-Blackhole Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		1380F4B481636BAA05837E0C /* Pods-Blackhole_Example-BrightFutures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example-BrightFutures.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example-BrightFutures/Pods-Blackhole_Example-BrightFutures.release.xcconfig"; sourceTree = "<group>"; };
 		14471A7DBEC9EAAA72325ED5 /* Pods-Blackhole Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example/Pods-Blackhole Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		43EBAE23CED89DD35F7E948E /* Pods-Blackhole Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Tests/Pods-Blackhole Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4CE7161254E99C062931695C /* Pods_Blackhole_Example_BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Example_BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB3709B03E5AD3C9B64268B /* Pods-Blackhole_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example/Pods-Blackhole_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		56C127EA715B618F957B964C /* Pods-Blackhole Example Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6B70688238073D348147CE /* Pods_Blackhole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Blackhole Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blackhole Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8287D7DF1A484715A9DA6BE1 /* Pods_Blackhole_Example_Watch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +336,8 @@
 				186CB07598F4538A2736BD47 /* Pods-Blackhole Watch Extension.release.xcconfig */,
 				77810ED3AF1444713F0C582C /* Pods-Blackhole Example.debug.xcconfig */,
 				14471A7DBEC9EAAA72325ED5 /* Pods-Blackhole Example.release.xcconfig */,
+				56C127EA715B618F957B964C /* Pods-Blackhole Example Watch Extension.debug.xcconfig */,
+				0572D813D06DB13CE367D044 /* Pods-Blackhole Example Watch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -404,9 +410,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCF4852F1DBF585E00FFC0DE /* Build configuration list for PBXNativeTarget "Blackhole Example Watch Extension" */;
 			buildPhases = (
+				3FF33443AF752D2915667F7F /* [CP] Check Pods Manifest.lock */,
 				CCF485181DBF585E00FFC0DE /* Sources */,
 				CCF485191DBF585E00FFC0DE /* Frameworks */,
 				CCF4851A1DBF585E00FFC0DE /* Resources */,
+				0FC543931E6730883AAEDB72 /* [CP] Embed Pods Frameworks */,
+				39E4A9F380A65E8135846D17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -524,6 +533,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		0FC543931E6730883AAEDB72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		382F10A5FEDF4F72468C8F12 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,6 +561,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example/Pods-Blackhole Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39E4A9F380A65E8135846D17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FF33443AF752D2915667F7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		781B496A44F3DD68BD399021 /* [CP] Check Pods Manifest.lock */ = {
@@ -884,6 +938,7 @@
 		};
 		CCF4852D1DBF585E00FFC0DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56C127EA715B618F957B964C /* Pods-Blackhole Example Watch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -906,6 +961,7 @@
 		};
 		CCF4852E1DBF585E00FFC0DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0572D813D06DB13CE367D044 /* Pods-Blackhole Example Watch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;

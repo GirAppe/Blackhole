@@ -8,4 +8,12 @@ target 'Blackhole Example' do
     inherit! :search_paths
 
   end
+
+  target 'Blackhole Example Watch Extension' do
+    platform :watchos, '3.0'
+    pod 'Blackhole/BrightFutures', :path => '../'
+    inherit! :search_paths
+
+  end
+  
 end

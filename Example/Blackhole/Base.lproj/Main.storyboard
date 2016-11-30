@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,23 +22,34 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bengal" translatesAutoresizingMaskIntoConstraints="NO" id="skx-bf-e3p">
+                                <rect key="frame" x="16" y="28" width="343" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9dm-87-MYk"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cat name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mJE-NK-EQE">
+                                <rect key="frame" x="16" y="164" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameChangedAction:" destination="vXZ-lx-hvc" eventType="editingChanged" id="x1z-Kg-676"/>
+                                    <action selector="nameEditEndedAction:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="StH-ms-bWD"/>
+                                </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JFr-yM-l6z">
+                                <rect key="frame" x="16" y="202" width="343" height="29"/>
                                 <segments>
                                     <segment title="Bengal"/>
                                     <segment title="Persian"/>
                                     <segment title="Siamese"/>
                                 </segments>
+                                <connections>
+                                    <action selector="catBreedSelected:" destination="vXZ-lx-hvc" eventType="valueChanged" id="lAn-Bj-2G5"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU1-u4-xnG">
+                                <rect key="frame" x="16" y="238" width="343" height="30"/>
                                 <state key="normal" title="Send cat"/>
                                 <connections>
                                     <action selector="sendCatAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TgF-HX-PT3"/>
@@ -43,6 +57,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="mJE-NK-EQE" firstAttribute="top" secondItem="skx-bf-e3p" secondAttribute="bottom" constant="8" id="5dB-Z1-nxM"/>
                             <constraint firstItem="skx-bf-e3p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5n3-Sw-9O4"/>
@@ -57,6 +72,9 @@
                             <constraint firstItem="mJE-NK-EQE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="mfa-sd-mEh"/>
                             <constraint firstItem="dU1-u4-xnG" firstAttribute="top" secondItem="JFr-yM-l6z" secondAttribute="bottom" constant="8" id="sFC-zu-0Eb"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bCm-44-0s4" appends="YES" id="8am-ol-Ni8"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="catBreedSegmentedControl" destination="JFr-yM-l6z" id="Cep-BI-qeL"/>
@@ -66,6 +84,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bCm-44-0s4">
+                    <connections>
+                        <action selector="dismissKeyboardAction:" destination="vXZ-lx-hvc" id="8Gl-eX-Nkg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
