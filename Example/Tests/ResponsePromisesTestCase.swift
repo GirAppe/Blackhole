@@ -74,7 +74,7 @@ class ResponsePromisesTestCase: BlackholeTestCase {
     }
     
     // MARK: - Moderate Tests
-    struct Cat: BlackholeMessageMappable,BlackholeMessageConvertible {
+    struct ACat: BlackholeMessageMappable,BlackholeMessageConvertible {
         let name: String
         let breed: Breed
         enum Breed: String {
@@ -109,10 +109,10 @@ class ResponsePromisesTestCase: BlackholeTestCase {
     }
     
     func testObjectSendingResponseSuccess() {
-        let cat1 = Cat(name: "Pussy", breed: .persian)
-        let cat2 = Cat(name: "Dotty", breed: .bengal)
-        let cat3 = Cat(name: "Tetty", breed: .siamese)
-        let cat4 = Cat(name: "Pratt", breed: .sphynx)
+        let cat1 = ACat(name: "Pussy", breed: .persian)
+        let cat2 = ACat(name: "Dotty", breed: .bengal)
+        let cat3 = ACat(name: "Tetty", breed: .siamese)
+        let cat4 = ACat(name: "Pratt", breed: .sphynx)
         
         let identifier = "CatRequest"
         
@@ -148,10 +148,10 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         
         // Send cats
         let persianRequestMessage: BlackholeMessage = ["breed":"persian"]
-        let _ = emitter.promiseResponseForMessage(persianRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        let _ = emitter.promiseResponseForMessage(persianRequestMessage, withType: ACat.self, andIdentifier: identifier)
         .onSuccess { cat in
             XCTAssertEqual(cat.name, "Pussy")
-            XCTAssertEqual(cat.breed, Cat.Breed.persian)
+            XCTAssertEqual(cat.breed, ACat.Breed.persian)
             persianExpectation.fulfill()
         }
         .onFailure { error in
@@ -159,10 +159,10 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         }
         
         let bengalRequestMessage: BlackholeMessage = ["breed":"bengal"]
-        let _ = emitter.promiseResponseForMessage(bengalRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        let _ = emitter.promiseResponseForMessage(bengalRequestMessage, withType: ACat.self, andIdentifier: identifier)
         .onSuccess { cat in
             XCTAssertEqual(cat.name, "Dotty")
-            XCTAssertEqual(cat.breed, Cat.Breed.bengal)
+            XCTAssertEqual(cat.breed, ACat.Breed.bengal)
             bengalExpectation.fulfill()
         }
         .onFailure { error in
@@ -170,14 +170,55 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         }
         
         let siameseRequestMessage: BlackholeMessage = ["breed":"siamese"]
-        let _ = emitter.promiseResponseForMessage(siameseRequestMessage, withType: Cat.self, andIdentifier: identifier)
+        let _ = emitter.promiseResponseForMessage(siameseRequestMessage, withType: ACat.self, andIdentifier: identifier)
         .onSuccess { cat in
             XCTAssertEqual(cat.name, "Tetty")
-            XCTAssertEqual(cat.breed, Cat.Breed.siamese)
+            XCTAssertEqual(cat.breed, ACat.Breed.siamese)
             siameseExpectation.fulfill()
         }
         .onFailure { error in
             XCTAssert(false)
+        }
+        
+        self.waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                XCTAssert(false, "Error sending: \(error)")
+            }
+        }
+    }
+    
+    func testCatsSendingResponseSuccess() {
+        guard let image = UIImage(named: "bengal") else {
+            XCTAssert(false)
+            return
+        }
+        let cat = Cat(name: "Betty", breed: "bengal", image: image)
+        
+        let identifier = "CatMessage"
+        
+        // Expect cats
+        let catExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
+        
+        // Prepare pattern
+        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(result: TestSession.EmitResult(success: true))
+        
+        let catListener = ObjectListener(type: Cat.self) { receivedCat  in
+            print(receivedCat.name)
+            print(receivedCat.breed)
+            print(receivedCat.image)
+            catExpectation.fulfill()
+        }
+        receiver.addListener(catListener, forIdentifier: identifier)
+        
+        // Send cats
+        emitter.promiseSendObject(cat, withIdentifier: identifier)
+        .onSuccess {
+            print("cat sent")
+        }
+        .onFailure { (error) in
+            XCTAssert(false,"Error: \(error)")
         }
         
         self.waitForExpectations(timeout: 5) { (error) in

@@ -50,7 +50,7 @@
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU1-u4-xnG">
                                 <rect key="frame" x="16" y="238" width="343" height="30"/>
-                                <state key="normal" title="Send cat"/>
+                                <state key="normal" title="Send cat through blackhole"/>
                                 <connections>
                                     <action selector="sendCatAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TgF-HX-PT3"/>
                                 </connections>

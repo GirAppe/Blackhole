@@ -9,6 +9,20 @@
 import Foundation
 import WatchConnectivity
 
+#if os(iOS)
+import UIKit
+#elseif os(watchOS)
+import WatchKit
+#endif
+    
+// MARK: - Typedefs
+/// Accepts only plist type dictionaries
+public typealias BlackholeMessage = [String:Any]
+/// Default success closure
+public typealias BlackholeSuccessClosure = ()->()
+/// Default failure closure
+public typealias BlackholeFailureClosure = (BlackholeError?)->()
+
 // MARK: - Protocols
 public protocol BlackholeMessageMappable {
     init?(message: BlackholeMessage)
@@ -40,6 +54,10 @@ extension NSArray: BlackholeDataConvertible {
 }
 
 extension NSDictionary: BlackholeDataConvertible {
+    
+    /// All objects must support NSArchiving / NSCoding
+    ///
+    /// - Returns: Data representation
     public func dataRepresentation() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
@@ -49,6 +67,13 @@ extension Array: BlackholeDataConvertible {
     public func dataRepresentation() -> Data {
         let anySelf = self.mapExisting { $0 }
         return NSArray(array: anySelf).dataRepresentation()
+    }
+}
+
+extension UIImage: BlackholeDataConvertible {
+    // By default sends image as PNG
+    public func dataRepresentation() -> Data {
+        return UIImagePNGRepresentation(self)!
     }
 }
 
@@ -117,14 +142,18 @@ extension Array: BlackholeDataMappable {
     
 }
 
-#if os(iOS)
-extension UIImage: BlackholeDataConvertible {
-    // By default sends image as PNG
-    public func dataRepresentation() -> Data {
-        return UIImagePNGRepresentation(self)!
-    }
-}
-
 extension UIImage: BlackholeDataMappable { }
-#endif
+
+// MARK: - Helpers
+extension NSDictionary {
+    
+    public class func dictionary(withData data: Data) -> NSDictionary? {
+        guard let dict = NSKeyedUnarchiver.unarchiveObject(with: data) as? NSDictionary else {
+            return nil
+        }
+        
+        return dict
+    }
+    
+}
 

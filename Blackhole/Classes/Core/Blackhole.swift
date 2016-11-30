@@ -9,10 +9,6 @@
 import Foundation
 import WatchConnectivity
 
-// MARK: - Typedefs
-public typealias BlackholeMessage = [String:Any]
-public typealias BlackholeSuccessClosure = ()->()
-public typealias BlackholeFailureClosure = (BlackholeError?)->()
 
 let BlackholeStartedSessionNotification = "BlackholeDidStartedSession"
 

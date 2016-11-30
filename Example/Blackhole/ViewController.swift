@@ -52,6 +52,19 @@ class ViewController: UIViewController {
         sendCatButton.isEnabled = validate()
     }
     
+    private func breed() -> CatBreed? {
+        switch catBreedSegmentedControl.selectedSegmentIndex {
+        case 0:
+            return .bengal
+        case 1:
+            return .persian
+        case 2:
+            return .siamese
+        default:
+            return nil
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func nameChangedAction(_ sender: UITextField) {
         revalidate()
@@ -75,7 +88,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCatAction(_ sender: AnyObject) {
+        guard let name = catNameTextField.text, let breed = breed()?.rawValue, let image = catImageView.image else {
+            return
+        }
         
+        let cat = Cat(name: name, breed: breed, image: image)
+        
+//        blackhole.promiseSendMessage(["text":"cat \(cat.name)"], withIdentifier: "sendText")
+        blackhole.promiseSendObject(cat, withIdentifier: "sendCat")
+        .onSuccess {
+            print("SUCCESS SENDING!")
+        }
+        .onFailure { error in
+            print("ERROR: \(error)")
+        }
     }
     
     @IBAction func dismissKeyboardAction(_ sender: Any) {

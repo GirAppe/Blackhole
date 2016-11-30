@@ -11,12 +11,20 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Blackhole_Example_Watch_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Blackhole_Example_Watch_Extension">
                     <items>
-                        <imageView width="1" height="98" alignment="left" hidden="YES" contentMode="scaleAspectFit" id="LTS-aH-1Sv"/>
-                        <label width="1" alignment="left" text="Blackhole" textAlignment="center" numberOfLines="0" id="lRD-QE-eda"/>
+                        <label width="1" alignment="left" text="Starting..." textAlignment="center" numberOfLines="0" id="lRD-QE-eda"/>
                         <separator alignment="left" id="sC6-Iz-kaD"/>
+                        <imageView width="1" height="70" alignment="left" contentMode="scaleAspectFit" id="ASK-VO-kAt"/>
+                        <label width="1" alignment="left" id="03N-1Q-jg6"/>
+                        <label width="1" alignment="left" id="g1t-iq-aEI"/>
                     </items>
+                    <connections>
+                        <outlet property="breedLabel" destination="g1t-iq-aEI" id="9V8-am-GFc"/>
+                        <outlet property="imageView" destination="ASK-VO-kAt" id="df0-3C-Ziy"/>
+                        <outlet property="nameLabel" destination="03N-1Q-jg6" id="KYa-nD-jXJ"/>
+                        <outlet property="titleLabel" destination="lRD-QE-eda" id="oFu-mR-fzO"/>
+                    </connections>
                 </controller>
             </objects>
         </scene>

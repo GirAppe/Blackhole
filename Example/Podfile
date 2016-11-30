@@ -15,5 +15,5 @@ target 'Blackhole Example' do
     inherit! :search_paths
 
   end
-  
+
 end
