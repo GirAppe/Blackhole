@@ -14,23 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "Blackhole_Example.app"
-               BlueprintName = "Blackhole_Example"
+               BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+               BuildableName = "Blackhole Example Watch App.app"
+               BlueprintName = "Blackhole Example Watch App"
                ReferencedContainer = "container:Blackhole.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "Blackhole_Tests.xctest"
-               BlueprintName = "Blackhole_Tests"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "Blackhole Example.app"
+               BlueprintName = "Blackhole Example"
                ReferencedContainer = "container:Blackhole.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,23 +42,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "Blackhole_Tests.xctest"
-               BlueprintName = "Blackhole_Tests"
-               ReferencedContainer = "container:Blackhole.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Blackhole_Example.app"
-            BlueprintName = "Blackhole_Example"
+            BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+            BuildableName = "Blackhole Example Watch App.app"
+            BlueprintName = "Blackhole Example Watch App"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,16 +65,27 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/Blackhole_Example">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Blackhole_Example.app"
-            BlueprintName = "Blackhole_Example"
+            BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+            BuildableName = "Blackhole Example Watch App.app"
+            BlueprintName = "Blackhole Example Watch App"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+            BuildableName = "Blackhole Example Watch App.app"
+            BlueprintName = "Blackhole Example Watch App"
+            ReferencedContainer = "container:Blackhole.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,16 +95,27 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/Blackhole_Example">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "Blackhole_Example.app"
-            BlueprintName = "Blackhole_Example"
+            BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+            BuildableName = "Blackhole Example Watch App.app"
+            BlueprintName = "Blackhole Example Watch App"
             ReferencedContainer = "container:Blackhole.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CCF4850F1DBF585E00FFC0DE"
+            BuildableName = "Blackhole Example Watch App.app"
+            BlueprintName = "Blackhole Example Watch App"
+            ReferencedContainer = "container:Blackhole.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
