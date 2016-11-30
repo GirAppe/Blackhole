@@ -22,6 +22,7 @@ public protocol BlackholeSession: class {
     func sendMessage(_ message: [String : Any], replyHandler: (([String : Any]) -> Swift.Void)?, errorHandler: ((Error) -> Swift.Void)?)
     func sendMessageData(_ data: Data, replyHandler: ((Data) -> Swift.Void)?, errorHandler: ((Error) -> Swift.Void)?)
     func transferFile(_ file: URL, metadata: [String : Any]?) -> WCSessionFileTransfer
+    
 }
 
 extension WCSession: BlackholeSession {
