@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/GirAppe/Blackhole.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
-  s.watchos.deployment_target = '2.0'
+  s.watchos.deployment_target = '3.0'
 
   s.frameworks = 'Foundation', 'WatchConnectivity'
   s.default_subspec = "Core"

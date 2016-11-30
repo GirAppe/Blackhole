@@ -8,13 +8,13 @@
 
 import WatchKit
 import Foundation
-import Blackhole
+//import Blackhole
 
 class InterfaceController: WKInterfaceController {
     // MARK: - Outlets
     
     // MARK: - Properties
-    var blackhole = Blackhole()
+//    var blackhole = Blackhole()
     
     // MARK: - Lifecycle
     override func awake(withContext context: Any?) {

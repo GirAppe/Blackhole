@@ -9,8 +9,3 @@ target 'Blackhole Example' do
 
   end
 end
-
-target 'Blackhole Example Watch Extension' do
-  pod 'Blackhole/BrightFutures', :path => '../'
-
-end

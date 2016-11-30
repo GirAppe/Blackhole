@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0AA95B3EFDB720CBE8EEE7CF /* Pods_Blackhole_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D089C6C2A75C108603150C /* Pods_Blackhole_Example.framework */; };
-		27905DB285B4457BF75B58A8 /* Pods_Blackhole_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CA4739AB9511F763A727DB /* Pods_Blackhole_Watch_Extension.framework */; };
-		32502746D04F76B6343A4D86 /* Pods_Blackhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6B70688238073D348147CE /* Pods_Blackhole.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -17,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* SendingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SendingTestCase.swift */; };
 		6A7F99D3DE50977E3A657B0C /* Pods_Blackhole_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E243C711F7520C7C092F /* Pods_Blackhole_Tests.framework */; };
-		784ECE86D564122F0873DA3E /* Pods_Blackhole_Example_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C58E02C431FBE3CA0633546 /* Pods_Blackhole_Example_Watch_Extension.framework */; };
 		CC0454E11DBF40C100B74396 /* SendingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8239B91DBE4BF70082F269 /* SendingPromisesTestCase.swift */; };
 		CC0454E21DBF40C100B74396 /* ReceivingPromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849511DBE5B8100DF5226 /* ReceivingPromisesTestCase.swift */; };
 		CC0454E31DBF40C100B74396 /* ResponsePromisesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3849531DBE5DB500DF5226 /* ResponsePromisesTestCase.swift */; };
@@ -89,7 +86,6 @@
 		1380F4B481636BAA05837E0C /* Pods-Blackhole_Example-BrightFutures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example-BrightFutures.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example-BrightFutures/Pods-Blackhole_Example-BrightFutures.release.xcconfig"; sourceTree = "<group>"; };
 		14471A7DBEC9EAAA72325ED5 /* Pods-Blackhole Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example/Pods-Blackhole Example.release.xcconfig"; sourceTree = "<group>"; };
 		186CB07598F4538A2736BD47 /* Pods-Blackhole Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Watch Extension/Pods-Blackhole Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
-		1C10B2E2239F095F27F7EC56 /* Pods-Blackhole Example Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		2600904BB1EDB17D45BCDD38 /* Pods-Blackhole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole/Pods-Blackhole.debug.xcconfig"; sourceTree = "<group>"; };
 		2D2E9EA0408ED2DBD6DB9EF0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2F7DFAAA6A095F7F4ABD81DA /* Pods-Blackhole_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Tests/Pods-Blackhole_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +96,6 @@
 		4CE7161254E99C062931695C /* Pods_Blackhole_Example_BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole_Example_BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB3709B03E5AD3C9B64268B /* Pods-Blackhole_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole_Example/Pods-Blackhole_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6B70688238073D348147CE /* Pods_Blackhole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blackhole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDB4E7685FEB682AD000EB5 /* Pods-Blackhole Example Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blackhole Example Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Blackhole Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blackhole Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AA95B3EFDB720CBE8EEE7CF /* Pods_Blackhole_Example.framework in Frameworks */,
-				32502746D04F76B6343A4D86 /* Pods_Blackhole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27905DB285B4457BF75B58A8 /* Pods_Blackhole_Watch_Extension.framework in Frameworks */,
-				784ECE86D564122F0873DA3E /* Pods_Blackhole_Example_Watch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +332,6 @@
 				186CB07598F4538A2736BD47 /* Pods-Blackhole Watch Extension.release.xcconfig */,
 				77810ED3AF1444713F0C582C /* Pods-Blackhole Example.debug.xcconfig */,
 				14471A7DBEC9EAAA72325ED5 /* Pods-Blackhole Example.release.xcconfig */,
-				1C10B2E2239F095F27F7EC56 /* Pods-Blackhole Example Watch Extension.debug.xcconfig */,
-				5CDB4E7685FEB682AD000EB5 /* Pods-Blackhole Example Watch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -414,12 +404,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCF4852F1DBF585E00FFC0DE /* Build configuration list for PBXNativeTarget "Blackhole Example Watch Extension" */;
 			buildPhases = (
-				51BCFA00A48C4F0CD4008C1F /* [CP] Check Pods Manifest.lock */,
 				CCF485181DBF585E00FFC0DE /* Sources */,
 				CCF485191DBF585E00FFC0DE /* Frameworks */,
 				CCF4851A1DBF585E00FFC0DE /* Resources */,
-				86A8A5E8EA28CAB952A40144 /* [CP] Embed Pods Frameworks */,
-				B88E4CD8A854CA23897D3DB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,11 +424,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YYAKJ5SR76;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -451,10 +439,12 @@
 					};
 					CCF4850F1DBF585E00FFC0DE = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = YYAKJ5SR76;
 						ProvisioningStyle = Automatic;
 					};
 					CCF4851B1DBF585E00FFC0DE = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = YYAKJ5SR76;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -473,9 +463,9 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* Blackhole Example */,
-				607FACE41AFB9204008FA782 /* Blackhole Tests */,
 				CCF4850F1DBF585E00FFC0DE /* Blackhole Example Watch App */,
 				CCF4851B1DBF585E00FFC0DE /* Blackhole Example Watch Extension */,
+				607FACE41AFB9204008FA782 /* Blackhole Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -549,21 +539,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example/Pods-Blackhole Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		51BCFA00A48C4F0CD4008C1F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		781B496A44F3DD68BD399021 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -579,21 +554,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		86A8A5E8EA28CAB952A40144 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9983ECC0AFD98C738476B5A2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -607,21 +567,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Tests/Pods-Blackhole Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B88E4CD8A854CA23897D3DB8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blackhole Example Watch Extension/Pods-Blackhole Example Watch Extension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C26F704CE8FFD4B78329E9F9 /* [CP] Embed Pods Frameworks */ = {
@@ -829,7 +774,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77810ED3AF1444713F0C582C /* Pods-Blackhole Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -844,7 +791,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14471A7DBEC9EAAA72325ED5 /* Pods-Blackhole Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				INFOPLIST_FILE = Blackhole/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -859,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB2F52C84003B77C3A536C85 /* Pods-Blackhole Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -872,7 +822,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blackhole_Example.app/Blackhole_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blackhole Example.app/Blackhole Example";
 			};
 			name = Debug;
 		};
@@ -880,6 +830,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43EBAE23CED89DD35F7E948E /* Pods-Blackhole Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -889,7 +840,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blackhole_Example.app/Blackhole_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blackhole Example.app/Blackhole Example";
 			};
 			name = Release;
 		};
@@ -902,6 +853,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				IBSC_MODULE = Blackhole_Example_Extension;
 				INFOPLIST_FILE = "Blackhole Example/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Blackhole-Example.watchkitapp";
@@ -923,6 +875,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				IBSC_MODULE = Blackhole_Example_Extension;
 				INFOPLIST_FILE = "Blackhole Example/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Blackhole-Example.watchkitapp";
@@ -937,13 +890,14 @@
 		};
 		CCF4852D1DBF585E00FFC0DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C10B2E2239F095F27F7EC56 /* Pods-Blackhole Example Watch Extension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				INFOPLIST_FILE = "Blackhole Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Blackhole-Example.watchkitapp.watchkitextension";
@@ -959,12 +913,13 @@
 		};
 		CCF4852E1DBF585E00FFC0DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CDB4E7685FEB682AD000EB5 /* Pods-Blackhole Example Watch Extension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = YYAKJ5SR76;
 				INFOPLIST_FILE = "Blackhole Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Blackhole-Example.watchkitapp.watchkitextension";
