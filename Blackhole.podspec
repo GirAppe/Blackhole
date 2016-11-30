@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Blackhole'
-  s.version          = '0.1.4'
+  s.version          = '1.0.0'
   s.summary          = 'A delightful iOS to watchOS communication framework.'
 
   s.description      = <<-DESC
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/GirAppe/Blackhole'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://raw.githubusercontent.com/GirAppe/Blackhole/develop/Icon-60%402x.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Andrzej Michnia' => 'amichnia@girappe.com' }
   s.source           = { :git => 'https://github.com/GirAppe/Blackhole.git', :tag => s.version.to_s }
