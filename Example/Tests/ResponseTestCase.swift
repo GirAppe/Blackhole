@@ -11,7 +11,7 @@ class ResponseTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
             guard let value = message["someKey"], value is String, value as! String == "stringValue" else {
@@ -55,7 +55,7 @@ class ResponseTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
             guard let value = message["someKey"], value is String, value as! String == "stringValue" else {
@@ -140,9 +140,9 @@ class ResponseTestCase: BlackholeTestCase {
         let siameseExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let catListener = MessageListener { message -> BlackholeMessage? in
             guard let breed = message["breed"] as? String else {
@@ -224,7 +224,7 @@ class ResponseTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
 
         let imageListener = ObjectListener(type: UIImage.self) { image in
             let data = image.dataRepresentation()

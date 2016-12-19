@@ -10,7 +10,7 @@ class SendingTestCase: BlackholeTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         do {
             XCTAssert(self.session === emitter.session)
@@ -37,7 +37,7 @@ class SendingTestCase: BlackholeTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: false))
+        self.session.emit(TestSession.EmitResult(success: false))
         
         do {
             XCTAssert(self.session === emitter.session)

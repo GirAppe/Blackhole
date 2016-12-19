@@ -45,7 +45,7 @@ class TestSession: BlackholeSession {
     }
     
     // MARK: - Actions
-    func emit(messageObject: SentMessageTuple) {
+    func emit(_ messageObject: SentMessageTuple) {
         guard let result = emitResults.first else {
             return
         }
@@ -60,7 +60,7 @@ class TestSession: BlackholeSession {
         }
     }
     
-    func emit(dataObject: SentDataTuple) {
+    func emit(_ dataObject: SentDataTuple) {
         guard let result = emitResults.first else {
             return
         }
@@ -75,7 +75,7 @@ class TestSession: BlackholeSession {
         }
     }
     
-    func emit(file: URL) {
+    func emit(_ file: URL) {
         guard let result = emitResults.first else {
             return
         }
@@ -90,12 +90,12 @@ class TestSession: BlackholeSession {
         }
     }
     
-    func emit(result: EmitResult) {
+    func emit(_ result: EmitResult) {
         emitResults.append(result)
     }
     
     // MARK: - Private
-    private func passMessage(_ message: SentMessageTuple) {
+    fileprivate func passMessage(_ message: SentMessageTuple) {
         if let handler = message.replyHandler {
             receiver.session(session, didReceiveMessage: message.message, replyHandler: handler)
         }
@@ -104,11 +104,11 @@ class TestSession: BlackholeSession {
         }
     }
     
-    private func failMessage(_ message: SentMessageTuple, withError error: Error!) {
+    fileprivate func failMessage(_ message: SentMessageTuple, withError error: Error!) {
         message.errorHandler?(error)
     }
     
-    private func passData(_ data: SentDataTuple) {
+    fileprivate func passData(_ data: SentDataTuple) {
         if let _ = data.replyHandler {
             receiver.session(session, didReceiveMessageData: data.data, replyHandler: data.replyHandler!)
         }
@@ -117,11 +117,11 @@ class TestSession: BlackholeSession {
         }
     }
     
-    private func failData(_ data: SentDataTuple, withError error: Error!) {
+    fileprivate func failData(_ data: SentDataTuple, withError error: Error!) {
         data.errorHandler?(error)
     }
     
-    private func prepareNewFile(_ file: URL) -> URL {
+    fileprivate func prepareNewFile(_ file: URL) -> URL {
         let url = FileManager.cacheTemporaryFileUrl()!
         do {
             let data = try Data(contentsOf: file)
@@ -133,7 +133,7 @@ class TestSession: BlackholeSession {
         return url
     }
     
-    private func passFile(_ file: URL) {
+    fileprivate func passFile(_ file: URL) {
         let newFile = prepareNewFile(file) // assure copy of file created
         temporaryFilesThatShouldBeDeleted.append(newFile)
         let ecnFile = TestFile(newFile)
@@ -146,7 +146,7 @@ class TestSession: BlackholeSession {
         
     }
     
-    private func failFile(_ file: URL, withError error: Error!) {
+    fileprivate func failFile(_ file: URL, withError error: Error!) {
         // TODO: Implement
         let ecoFileTransfer = TestFileTransfer(file)
         
@@ -166,16 +166,16 @@ class TestSession: BlackholeSession {
     
     func sendMessage(_ message: [String : Any], replyHandler: (([String : Any]) -> Swift.Void)?, errorHandler: ((Error) -> Swift.Void)?) {
         let element: SentMessageTuple = (message: message, replyHandler: replyHandler ?? { _ in }, errorHandler: errorHandler ?? { _ in })
-        emit(messageObject: element)
+        emit(element)
     }
     
     func sendMessageData(_ data: Data, replyHandler: ((Data) -> Swift.Void)?, errorHandler: ((Error) -> Swift.Void)?) {
         let element: SentDataTuple = (data: data, replyHandler: replyHandler, errorHandler: errorHandler)
-        emit(dataObject: element)
+        emit(element)
     }
     
     func transferFile(_ file: URL, metadata: [String : Any]?) -> WCSessionFileTransfer {
-        emit(file: file)
+        emit(file)
         
         temporaryFilesThatShouldBeDeleted.append(file)
         

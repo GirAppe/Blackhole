@@ -496,10 +496,12 @@ extension Blackhole: WCSessionDelegate {
     }
     
     public func session(_ session: WCSession, didReceive file: WCSessionFile) {
+        let url: URL! = file.fileURL
+        
         // Defer file clearup
         defer {
             do {
-                try FileManager.default.removeItem(at: file.fileURL) // Remove file
+                try FileManager.default.removeItem(at: url) // Remove file
             }
             catch {
                 // TODO: Handle!
@@ -507,7 +509,7 @@ extension Blackhole: WCSessionDelegate {
         }
         
         // Retreive message data
-        guard let messageData = try? Data(contentsOf: file.fileURL) else {
+        guard let messageData = try? Data(contentsOf: url) else {
             // TODO: Handle!
             return
         }
@@ -547,12 +549,14 @@ extension Blackhole: WCSessionDelegate {
     }
     
     public func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+        let url: URL! = fileTransfer.file.fileURL
+        
         // Complete transfer
         let blackholeError: BlackholeError? = error != nil ? BlackholeError.sendingError(error!) : nil
-        self.fileTransfers[fileTransfer.file.fileURL.absoluteString]?(blackholeError)
+        self.fileTransfers[url.absoluteString]?(blackholeError)
         
         do {
-            try FileManager.default.removeItem(at: fileTransfer.file.fileURL)
+            try FileManager.default.removeItem(at: url)
         }
         catch {
             // TODO: Handle!

@@ -17,11 +17,11 @@ enum CatBreed : String {
     var image: UIImage {
         switch self {
         case .bengal:
-            return #imageLiteral(resourceName: "bengal")
+            return UIImage(named: "bengal")!
         case .persian:
-            return #imageLiteral(resourceName: "persian")
+            return UIImage(named: "persian")!
         case .siamese:
-            return #imageLiteral(resourceName: "siamese")
+            return UIImage(named: "siamese")!
         }
     }
 }
@@ -44,15 +44,15 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Private
-    private func validate() -> Bool {
+    fileprivate func validate() -> Bool {
         return (catNameTextField.text?.characters.count ?? 0) > 0
     }
     
-    private func revalidate() {
+    fileprivate func revalidate() {
         sendCatButton.isEnabled = validate()
     }
     
-    private func breed() -> CatBreed? {
+    fileprivate func breed() -> CatBreed? {
         switch catBreedSegmentedControl.selectedSegmentIndex {
         case 0:
             return .bengal

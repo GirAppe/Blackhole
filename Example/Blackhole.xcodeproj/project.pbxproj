@@ -185,10 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				CCFB5F131DEEEB3300ADA947 /* Blackhole Example Shared */,
-				607FACD21AFB9204008FA782 /* Blackhole Example */,
-				CCF485111DBF585E00FFC0DE /* Blackhole Example App */,
-				CCF485201DBF585E00FFC0DE /* Blackhole Example Extension */,
+				CC8AC8C61E08844D00B121D8 /* Blackhole Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				EA91EBC55D7925FCA8E53C10 /* Pods */,
@@ -207,7 +204,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Blackhole Example */ = {
+		607FACD21AFB9204008FA782 /* iphone App */ = {
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -217,7 +214,7 @@
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
-			name = "Blackhole Example";
+			name = "iphone App";
 			path = Blackhole;
 			sourceTree = "<group>";
 		};
@@ -303,18 +300,29 @@
 			name = BrightFutures;
 			sourceTree = "<group>";
 		};
-		CCF485111DBF585E00FFC0DE /* Blackhole Example App */ = {
+		CC8AC8C61E08844D00B121D8 /* Blackhole Example */ = {
+			isa = PBXGroup;
+			children = (
+				CCFB5F131DEEEB3300ADA947 /* Shared */,
+				607FACD21AFB9204008FA782 /* iphone App */,
+				CCF485111DBF585E00FFC0DE /* watch App */,
+				CCF485201DBF585E00FFC0DE /* watch App Extension */,
+			);
+			name = "Blackhole Example";
+			sourceTree = "<group>";
+		};
+		CCF485111DBF585E00FFC0DE /* watch App */ = {
 			isa = PBXGroup;
 			children = (
 				CCF485121DBF585E00FFC0DE /* Interface.storyboard */,
 				CCF485151DBF585E00FFC0DE /* Assets.xcassets */,
 				CCF485171DBF585E00FFC0DE /* Info.plist */,
 			);
-			name = "Blackhole Example App";
+			name = "watch App";
 			path = "Blackhole Example";
 			sourceTree = "<group>";
 		};
-		CCF485201DBF585E00FFC0DE /* Blackhole Example Extension */ = {
+		CCF485201DBF585E00FFC0DE /* watch App Extension */ = {
 			isa = PBXGroup;
 			children = (
 				CCF485211DBF585E00FFC0DE /* InterfaceController.swift */,
@@ -322,15 +330,16 @@
 				CCF485251DBF585E00FFC0DE /* Assets.xcassets */,
 				CCF485271DBF585E00FFC0DE /* Info.plist */,
 			);
+			name = "watch App Extension";
 			path = "Blackhole Example Extension";
 			sourceTree = "<group>";
 		};
-		CCFB5F131DEEEB3300ADA947 /* Blackhole Example Shared */ = {
+		CCFB5F131DEEEB3300ADA947 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				CCFB5F141DEEEB5000ADA947 /* Cat.swift */,
 			);
-			name = "Blackhole Example Shared";
+			name = Shared;
 			path = Blackhole;
 			sourceTree = "<group>";
 		};
@@ -450,27 +459,29 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = YYAKJ5SR76;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					CCF4850F1DBF585E00FFC0DE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YYAKJ5SR76;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					CCF4851B1DBF585E00FFC0DE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YYAKJ5SR76;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -965,6 +976,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08C1E6B0B66DCC6B2F2CB8EA /* Pods-Blackhole Example Watch Extension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -988,6 +1000,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6192B362FD35529DF6C4DE20 /* Pods-Blackhole Example Watch Extension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
