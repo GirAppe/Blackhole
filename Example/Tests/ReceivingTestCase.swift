@@ -11,7 +11,7 @@ class ReceivingTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
             guard let value = message["someKey"], value is String, value as! String == "stringValue" else {
@@ -50,9 +50,9 @@ class ReceivingTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         var counter = 3
         

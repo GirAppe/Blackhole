@@ -1,5 +1,5 @@
 PODS:
-  - Blackhole/BrightFutures (0.1.4):
+  - Blackhole/BrightFutures (1.0.0):
     - BrightFutures (~> 5.0.1)
   - BrightFutures (5.0.1):
     - Result (~> 3.0)
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Blackhole: c897a440b5f5ed1ae912a76fc790103d2ac33f5c
+  Blackhole: 55e6f03f82356d10f05b6b94f056b579554c1a40
   BrightFutures: 72fbc51227fa912ccdd5af04f2f6cea0b2d401a6
   Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
 

@@ -11,7 +11,7 @@ class SendingPromisesTestCase: BlackholeTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         emitter.promiseSendMessage(message, withIdentifier: identifier)
         .onSuccess {
@@ -34,7 +34,7 @@ class SendingPromisesTestCase: BlackholeTestCase {
         
         let expectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
         
-        self.session.emit(result: TestSession.EmitResult(success: false))
+        self.session.emit(TestSession.EmitResult(success: false))
         
         emitter.promiseSendMessage(message, withIdentifier: identifier)
         .onSuccess {

@@ -11,7 +11,7 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
             guard let value = message["someKey"], value is String, value as! String == "stringValue" else {
@@ -50,7 +50,7 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: false))
+        self.session.emit(TestSession.EmitResult(success: false))
         
         let messegeListener = MessageListener { message -> BlackholeMessage? in
             XCTAssert(false)
@@ -122,9 +122,9 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         let siameseExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         
         // Prepare pattern
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let catListener = MessageListener { message -> BlackholeMessage? in
             guard let breed = message["breed"] as? String else {
@@ -200,9 +200,9 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         let catExpectation: XCTestExpectation = self.expectation(description: "Expect cat to be delivered on time")
         
         // Prepare pattern
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let catListener = ObjectListener(type: Cat.self) { receivedCat  in
             print(receivedCat.name)
@@ -247,7 +247,7 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let imageListener = ObjectListener(type: UIImage.self) { image in
             let data = image.dataRepresentation()
@@ -297,7 +297,7 @@ class ResponsePromisesTestCase: BlackholeTestCase {
         let sendExpectation: XCTestExpectation = self.expectation(description: "Expect message to be sent")
         let receiveExpectation: XCTestExpectation = self.expectation(description: "Expect message to be delivered")
         
-        self.session.emit(result: TestSession.EmitResult(success: true))
+        self.session.emit(TestSession.EmitResult(success: true))
         
         let responder = MessageObjectResponder { message -> UIImage? in
             XCTAssertEqual((message["image"] as? String) ?? "", "blackhole")
