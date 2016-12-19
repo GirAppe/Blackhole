@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Blackhole'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'A delightful iOS to watchOS communication framework.'
 
   s.description      = <<-DESC
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'BrightFutures' do |futures|
       futures.source_files  = 'Blackhole/Classes/{Core,BrightFutures}/**/*'
-      futures.dependency      'BrightFutures', '~> 5.0.1'
+      futures.dependency      'BrightFutures', '~> 5.1'
   end
 
 end
