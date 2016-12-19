@@ -2,12 +2,14 @@
 All changes to Blackhole project will be documented in this file.
 
 ---
-## __1.0.1__ / 2016
+## __1.0.2__ / 2016
 
 #### Added:
 * Swift 3.0.2 support
 
 #### Updated:
+* BrightFutures dependency
+* Readme typo
 * More "swifty" method names
 
 #### Fixed:
