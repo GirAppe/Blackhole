@@ -29,7 +29,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Blackhole requires __iOS 9.0+__, and __watchOS 3.0+__. It requires __Swift 3.0.+__.
+Blackhole requires __iOS 9.0+__, and __watchOS 3.0+__. It requires __Swift 3.0__.
 
 ## Installation
 
