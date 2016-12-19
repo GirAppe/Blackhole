@@ -29,7 +29,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Blackhole requires __iOS 9.0+__, and __watchOS 3.0+__. It requires __Swift 3.0.1__.
+Blackhole requires __iOS 9.0+__, and __watchOS 3.0+__. It requires __Swift 3.0.+__.
 
 ## Installation
 
@@ -45,7 +45,7 @@ or, if you intend to use it with [BrightFutures](https://github.com/Thomvis/Brig
 ````ruby
 pod "Blackhole/BrightFutures"
 ````
-BrightFutures is great promises implementation, and it works with Blackhole like a charm. It allows to easily wrap async communication within app and phone (see the example app for reference). If you need more info on promises topis - check GirAppe blog post: [*"Promises, unravelling the spaghetti code"*](http://blog.girappe.com/?promisekit).
+BrightFutures is great promises implementation, and it works with Blackhole like a charm. It allows to easily wrap async communication within app and phone (see the example app for reference). If you need more info on promises topic - check [GirAppe](http://www.girappe.com) blog post: [*"Promises, unravelling the spaghetti code"*](http://blog.girappe.com/?promisekit).
 
 
 ## Author
