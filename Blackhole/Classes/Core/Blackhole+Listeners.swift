@@ -13,7 +13,7 @@ import WatchConnectivity
 /// Adopting listener protocol allows responding to incoming communication
 public protocol Listener: class {
     var time: Date { get }
-    weak var wormhole: Blackhole? { get set }
+    weak var blackhole: Blackhole? { get set }
     func deliver(_ object: Any?) -> Any?
 }
 
@@ -31,7 +31,7 @@ open class MessageListener: Listener {
     open let time = Date()
     var handler: (BlackholeMessage)->(BlackholeMessage?)
     var autoremoved: Bool = false
-    weak open var wormhole: Blackhole?
+    weak open var blackhole: Blackhole?
     
     public init(handler: @escaping (BlackholeMessage)->(BlackholeMessage?)) {
         self.handler = handler
@@ -39,7 +39,7 @@ open class MessageListener: Listener {
     
     open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
-            self.wormhole?.removeListener(self)
+            self.blackhole?.removeListener(self)
         }
         
         guard let message = object as? BlackholeMessage else {
@@ -59,7 +59,7 @@ open class DataListener: Listener {
     open let time = Date()
     var handler: (Data)->(Data?)
     var autoremoved: Bool = false
-    weak open var wormhole: Blackhole?
+    weak open var blackhole: Blackhole?
     
     // MARK: - Lifecycle
     public init(handler: @escaping (Data)->(Data?)) {
@@ -69,7 +69,7 @@ open class DataListener: Listener {
     // MARK: - Public
     open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
-            self.wormhole?.removeListener(self)
+            self.blackhole?.removeListener(self)
         }
         
         guard let data = object as? Data else {
@@ -91,7 +91,7 @@ open class ObjectListener<T:BlackholeDataMappable>: Listener {
     var handler: ((T)->(BlackholeDataConvertible?))?
     private var voidHandler: ((T)->(Void))?
     var autoremoved: Bool = false
-    weak open var wormhole: Blackhole?
+    weak open var blackhole: Blackhole?
     
     // MARK: - Lifecycle
     public init<R:BlackholeDataConvertible>(type: T.Type, responseType: R.Type, handler: @escaping (T)->(R?)) {
@@ -104,7 +104,7 @@ open class ObjectListener<T:BlackholeDataMappable>: Listener {
     // MARK: - Public
     open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
-            self.wormhole?.removeListener(self)
+            self.blackhole?.removeListener(self)
         }
         
         guard let data = object as? Data else {
@@ -134,7 +134,7 @@ open class MessageObjectResponder<R:BlackholeDataConvertible>: Listener {
     open let time = Date()
     var handler: (BlackholeMessage)->(R?)
     var autoremoved: Bool = false
-    weak open var wormhole: Blackhole?
+    weak open var blackhole: Blackhole?
     
     public init(handler: @escaping (BlackholeMessage)->(R?)) {
         self.handler = handler
@@ -142,7 +142,7 @@ open class MessageObjectResponder<R:BlackholeDataConvertible>: Listener {
     
     open func deliver(_ object: Any?) -> Any? {
         if self.autoremoved {
-            self.wormhole?.removeListener(self)
+            self.blackhole?.removeListener(self)
         }
         
         if let data = object as? Data, let message = Dictionary<String,Any>(data: data) {
