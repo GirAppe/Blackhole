@@ -58,7 +58,7 @@ open class Blackhole: NSObject {
     ///   - identifier: Communication identifier
     open func addListener(_ listener: Listener, forIdentifier identifier: String) {
         self.listeners[identifier] = listener
-        listener.wormhole = self
+        listener.blackhole = self
     }
     
     /// Removes listener for given identifier from responding chain

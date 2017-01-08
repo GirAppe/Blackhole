@@ -1,6 +1,15 @@
 # Changelog
 All changes to Blackhole project will be documented in this file.
 
+--
+## __1.0.3__ / 2016
+
+#### Updated:
+* Finished renaming Wormhole to Blackhole
+
+#### Fixed:
+* Problems with optional/non optional WCSessionFile file URL
+
 ---
 ## __1.0.2__ / 2016
 
